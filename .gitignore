@@ -1,0 +1,90 @@
+# Cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Reperes
+.ipynb_checkpoints/
+*.ipynb~         
+
+# Environement virtuel
+.venv/
+venv/
+env/
+
+# Ignorer les fichiers d'images dans les datasets
+**/african_plums_dataset/**/*.jpg
+**/african_plums_dataset/**/*.jpeg
+**/african_plums_dataset/**/*.png
+**/african_plums_dataset/**/*.tiff
+**/african_plums_dataset/**/*.gif
+
+# Contenu des datasets
+african_plums_dataset/cleaned_data/
+african_plums_dataset/superclass_data/
+african_plums_dataset/defect_data/
+african_plums_dataset/processed_csv.csv
+african_plums_dataset/organized_plums_data_new.csv
+african_plums_dataset/class_weights.json
+
+# Ignorer les fichiers temporaires générés par les notebooks
+**/Notebooks/*.ipynb_checkpoints/
+Notebooks/runs/
+runs/           
+wandb/          
+       
+# Images
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.bmp
+*.gif
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.idea/
+.vscode/
+*.code-workspace
+
+# Ignorer les fics
+*.pt            
+*.ckpt          
+*.onnx          
+*.tflite 
+*.txt
+*.yaml
+
+# Ignorer les fichiers caches (exemples de caches générés par PyTorch, TensorFlow, etc.)
+**/*cache*
+**/*.json
+
+# Ignorer les logs
+*.log
+*.tmp
+*.bak
+*.swp         
+*.swo
+
+# Ignorer les répertoires de virtualenvs
+.venv/
+venv/
+
+# Ignorer les fichiers de configuration spécifiques à certains outils
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignorer les répertoires de modèles (entraînés et non entraînés)
+**/Models/Trained/**/
+**/Models/Untrained/**/
+**/Models/Trained-DefectClass/**/
+**/Models/Trained-Superclass/**/
+
+#/Models
+
+# Ignorer tous les fichiers temporaires et répertoires de sauvegarde
+*.swp
+*.swo
