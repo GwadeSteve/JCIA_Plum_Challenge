@@ -1,26 +1,26 @@
 # 🧠 PlumVision – JCIA Hackathon 2025
 
-## 🌾 Nom de l'équipe : **AgriNova AI**
+## Nom de l'équipe : **...**
 
 ---
 
-## 🎯 Objectif
+## Objectif
 
 Développer une solution intelligente de **tri automatique de prunes africaines** via une chaîne de traitement temps réel, classifiant chaque prune dans l'une des **6 catégories** :
 
-- ✅ Bonne qualité
-- 🟡 Non mûre
-- 🔴 Tachetée
-- ⚫ Fissurée
-- 💢 Meurtrie
-- 💀 Pourrie
+- Bonne qualité
+- Non mûre
+- Tachetée
+- Fissurée
+- Meurtrie
+- Pourrie
 
 Fonctionnalités principales :
-- 📷 Classification en **temps réel** via caméra fixe (ex. au-dessus d’un tapis roulant)
-- 🌐 Interface web de monitoring et prédiction (upload / webcam)
-- 🧠 Prédictions par **modèles multi-étapes** (superclasse + défauts)
-- ✨ Génération de **commentaires automatiques** via Gemini API
-- 📊 Tableau de bord avec statistiques de tri par session
+- Classification en **temps réel** via caméra fixe (ex. au-dessus d’un tapis roulant)
+- Interface web de monitoring et prédiction (upload / webcam)
+- Prédictions par **modèles multi-étapes** (superclasse + défauts)
+- Génération de **commentaires automatiques** via Gemini API
+- Tableau de bord avec statistiques de tri par session
 
 ---
 
@@ -29,7 +29,7 @@ Fonctionnalités principales :
 | Composant         | Outils / Langages                                      |
 |-------------------|--------------------------------------------------------|
 | Modèles ML        | PyTorch, YOLOv8-cls, EfficientNetB0, MobileNetV2       |
-| Backend API       | **FastAPI** + Uvicorn (temps réel, rapide, asynchrone) |
+| Backend API       | **FastAPI**, **Flask** + Uvicorn (temps réel, rapide, asynchrone) |
 | Frontend          | **React + TailwindCSS + Axios + Chart.js**            |
 | Temps réel        | **SSE (Server-Sent Events)** / WebSockets (optionnel)  |
 | Déploiement       | Docker, Gunicorn, Nginx (si besoin)                    |
@@ -40,19 +40,9 @@ Fonctionnalités principales :
 
 ---
 
-## 🧹 Architecture du Système
+## Architecture du Système
 
-```plaintext
-                             CAMÉRA / STREAMING
-                                (temps réel)
-                                     │
-                             [ Capture par Frontend ]
-                                     │
-                                     ▼
-📈 Interface Web ➔ API FastAPI ➔ Modèles PyTorch (superclasse / défauts)
-         └️ SSE temps réel ← Base de données (sessions)
-                                 └️ Gemini (commentaires IA)
-```
+<img src="./Image.png"/>
 
 ---
 
@@ -60,16 +50,16 @@ Fonctionnalités principales :
 
 > 🎥 **Sur le terrain :** Une entreprise installe le système au-dessus d’un tapis roulant. À l’ouverture du logiciel :
 >
-> 1. 📡 Une **session de tri est lancée**
-> 2. 📷 Les images des prunes sont **capturées en direct**
-> 3. 🧠 Le backend **classifie** chaque prune (via modèles)
-> 4. 🚦 Un signal est envoyé à un système **de redirection physique**
-> 5. 📊 Une interface affiche en temps réel :
+> 1. Une **session de tri est lancée**
+> 2. Les images des prunes sont **capturées en direct**
+> 3. Le backend **classifie** chaque prune (via modèles)
+> 4. Un signal est envoyé à un système **de redirection physique**
+> 5. Une interface affiche en temps réel :
 >    - Nombre total de prunes triées
 >    - Répartition par catégorie
 >    - Taux de qualité globale
 >    - Historique de tri
-> 6. 📟 À la fin, un **rapport automatique** est généré.
+> 6. À la fin, un **rapport automatique** est généré.
 
 ---
 
@@ -206,45 +196,45 @@ Fonctionnalités principales :
 
 ## 💾 Frontend – Fonctionnalités
 
-- 📷 **Webcam** ou **upload** local
-- ✅ Affichage instantané de la prédiction
-- 📈 **Dashboard temps réel**
+- **Webcam** ou **upload** local
+- Affichage instantané de la prédiction
+- **Dashboard temps réel**
   - Nombre de prunes triées
   - Graphiques par catégories
-- ✨ **Génération de rapport textuel automatique**
-- 📱 Responsive pour tablette & mobile
+- **Génération de rapport textuel automatique**
+- Responsive pour tablette & mobile
 
 ---
 
 ## 📆 Plan de travail – 6 Jours
 
-### 🛠️ Jour 1 – Dataset & Setup
+### Jour 1 – Dataset & Setup
 - Téléchargement et organisation des datasets : `cleaned_data`, `superclass_data`, `defect_data`
 - Split stratifié (train/val/test)
 - Environnement Python + GitHub
 
-### 🧠 Jour 2 – Entraînement YOLOv8-cls
+### Jour 2 – Entraînement YOLOv8-cls
 - Adapter dataset + entraînement
 - Sauvegarder modèle et logs
 - Premiers tests de précision
 
-### 🧠 Jour 3 – Autres modèles
+### Jour 3 – Autres modèles
 - Entraînement EfficientNetB0, MobileNetV2
 - Comparaison modèles : précision / rapidité
 - Sélection du modèle final
 
-### 🛠️ Jour 4 – Backend + API
-- FastAPI : endpoints + traitement images
+### Jour 4 – Backend + API
+- Flask API : endpoints + traitement images
 - Intégration Gemini
 - Système de session + statistiques
 - Tests via Postman
 
-### 🖼️ Jour 5 – Frontend + Dashboard
+### Jour 5 – Frontend + Dashboard
 - Composants webcam, uploader, dashboard
 - SSE ou polling pour maj temps réel
 - Intégration Gemini et affichage résultat
 
-### 🏰 Jour 6 – Finitions & Livraison
+### Jour 6 – Finitions & Livraison
 - Nettoyage
 - Dockerisation (si temps)
 - Vidéo de démo (≤ 2 min)
@@ -252,7 +242,7 @@ Fonctionnalités principales :
 
 ---
 
-## ✅ Checklist finale
+## Checklist finale
 
 | Élément              | Statut |
 |----------------------|--------|
@@ -275,4 +265,3 @@ Fonctionnalités principales :
 - Authentification utilisateur
 - Historique avancé + export CSV/PDF
 - Multilangue (FR/EN)
-
