@@ -40,7 +40,7 @@ async def websocket_stream_endpoint(
         session_id = await session_manager.connect(websocket)
         if session_id:
             try:
-                async with AsyncSessionLocal() as db:  # Create a session for message handling
+                async with AsyncSessionLocal() as db:
                     while True:
                         data = await websocket.receive_bytes()
                         await session_manager.handle_message(session_id, data, db)
