@@ -55,16 +55,15 @@ desktop.ini
 *.code-workspace
 
 # Ignorer les fics
-*.pt            
+**/Models/*.pt            
 *.ckpt          
 *.onnx          
 *.tflite 
 *.yaml
-prompt.txt
 
 # Ignorer les fichiers caches (exemples de caches générés par PyTorch, TensorFlow, etc.)
 **/*cache*
-**/*.json
+**/Models/*.json
 
 # Ignorer les logs
 *.log

@@ -1,0 +1,41 @@
+{
+    "torch_random_seed": 1242025,
+    "split_random_seed": 1242025,
+    "data_splits": {
+        "train_percentage": 0.9,
+        "validation_percentage": 0.05,
+        "test_percentage": 0.05
+    },
+    "run_name": "run_002",
+    "model": "rexnet_100",
+    "dataset": "/kaggle/input/african-plums-quality-and-defect-assessment-data/african_plums_dataset/african_plums",
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "epochs": 20,
+    "patience": 5,
+    "classes": {
+        "spotted": 0,
+        "unaffected": 1,
+        "unripe": 2,
+        "rotten": 3,
+        "bruised": 4,
+        "cracked": 5
+    },
+    "class_counts_train": {
+        "spotted": 683,
+        "unaffected": 1549,
+        "unripe": 743,
+        "rotten": 648,
+        "bruised": 287,
+        "cracked": 146
+    },
+    "evaluation_metrics": {
+        "accuracy": 0.7035398230088495,
+        "f1": 0.71154984711604,
+        "sensitivity": 0.5890251752783654,
+        "specificity": 0.0,
+        "avg_inference_time": 0.05896767261808952,
+        "model_size": 3523559,
+        "model_file_size_mb": 13.73
+    }
+}
