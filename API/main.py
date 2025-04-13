@@ -1,9 +1,13 @@
+import uuid
 from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, WebSocket, WebSocketDisconnect, Query 
 from starlette.websockets import WebSocketState 
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 from Predictor.predictor_utilities.predict import predictor
-from database import Prediction, SessionMetrics, get_db, create_db_and_tables,add_prediction_db
+from database import (
+    Prediction, SessionMetrics, get_db, 
+    create_db_and_tables,add_prediction_db, 
+    finalize_session_db, create_session_db, AsyncSessionLocal )
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from stream_manager import session_manager
@@ -26,7 +30,6 @@ async def on_startup():
     await create_db_and_tables()
     print("Startup complete.")
 
-
 @app.websocket("/ws/stream")
 async def websocket_stream_endpoint(
     websocket: WebSocket,
@@ -34,28 +37,24 @@ async def websocket_stream_endpoint(
 ):
     session_id = None
     try:
-        session_id = await session_manager.connect(websocket, db)
+        await websocket.accept()
+        session_id = str(uuid.uuid4())
+        print(f"WebSocket connected: {session_id}")
+        await create_session_db(db, session_id)
+        await websocket.send_json({"status": "You are connected to a new session", "session_id": session_id})
         while True:
-            data = await websocket.receive_bytes()
-            await session_manager.handle_message(session_id, data, db)
-
+            await websocket.receive_text()
     except WebSocketDisconnect:
         print(f"WebSocket disconnected: {session_id}")
-        if session_id:
-            await session_manager.disconnect(session_id, db)
-
     except Exception as e:
-        print(f"Error in WebSocket connection for session {session_id}: {e}")
-        try:
-            await websocket.close(code=1011)
-        except Exception:
-            pass
-        if session_id:
-            await session_manager.disconnect(session_id, db)
-
+        print(f"WebSocket error: {e}")
     finally:
         if session_id:
-            await session_manager.disconnect(session_id, db)
+            print(f"Finalizing session {session_id} on disconnect.")
+            async with AsyncSessionLocal() as final_db:
+                await finalize_session_db(final_db, session_id)
+        await db.close()
+
 
 @app.post("/api/predict", response_model=dict)
 async def predict_endpoint(
@@ -150,6 +149,7 @@ async def get_sessions(
          } for s in sessions
     ]
 
+
 @app.get("/api/sessions/{session_id}", response_model=dict)
 async def get_session_details(session_id: str, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(SessionMetrics).where(SessionMetrics.session_id == session_id))
@@ -166,6 +166,7 @@ async def get_session_details(session_id: str, db: AsyncSession = Depends(get_db
         "end_time": session.end_time.isoformat() if session.end_time else None,
         "duration_seconds": session.duration_seconds
     }
+
 
 @app.get("/")
 async def root():
