@@ -12,6 +12,9 @@ __pycache__/
 venv/
 env/
 
+#untrack init files
+__init__.py
+
 # Ignorer les fichiers d'images dans les datasets
 **/african_plums_dataset/**/*.jpg
 **/african_plums_dataset/**/*.jpeg
@@ -20,8 +23,10 @@ env/
 **/african_plums_dataset/**/*.gif
 
 # Contenu des datasets
+Plums/
 african_plums_dataset/cleaned_data/
 african_plums_dataset/superclass_data/
+african_plums_dataset/Sets/
 african_plums_dataset/defect_data/
 african_plums_dataset/processed_csv.csv
 african_plums_dataset/organized_plums_data_new.csv
