@@ -71,6 +71,7 @@ desktop.ini
 *.bak
 *.swp         
 *.swo
+*.db
 
 # Ignorer les répertoires de virtualenvs
 .venv/
