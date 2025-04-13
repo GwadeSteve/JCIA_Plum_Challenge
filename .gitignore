@@ -39,7 +39,6 @@ runs/
 wandb/          
        
 # Images
-*.png
 *.jpg
 *.jpeg
 *.webp
