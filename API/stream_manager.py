@@ -11,7 +11,8 @@ from database import (
     update_session_stats_db,
     finalize_session_db,
     add_prediction_db,
-    SessionMetrics
+    SessionMetrics,
+    AsyncSessionLocal  # Import AsyncSessionLocal
 )
 from Predictor.predictor_utilities.predict import PlumPredictor
 
@@ -21,6 +22,7 @@ class SessionManager:
     _instance: Optional["SessionManager"] = None
     active_connections: Dict[str, WebSocket] = {}
     session_timers: Dict[str, asyncio.Task] = {}
+    session_dbs: Dict[str, AsyncSession] = {}  # Store database sessions per session ID
 
     def __new__(cls, predictor: PlumPredictor):
         if cls._instance is None:
@@ -55,17 +57,16 @@ class SessionManager:
                 except Exception as e:
                     print(f"Error sending closing message or closing WebSocket for {session_id}: {e}")
 
-            await self.disconnect(session_id, db, is_timeout=True)
+            await self.disconnect(session_id, is_timeout=True)
 
         except asyncio.CancelledError:
             print(f"Inactivity timer cancelled for session {session_id}.")
             pass
         except Exception as e:
             print(f"Error in inactivity checker for {session_id}: {e}")
-            await self.disconnect(session_id, db, is_timeout=False)
+            await self.disconnect(session_id, is_timeout=False)
 
-
-    async def connect(self, websocket: WebSocket, db: AsyncSession) -> str:
+    async def connect(self, websocket: WebSocket) -> str:
         await websocket.accept()
 
         # Close any existing active connection
@@ -74,14 +75,19 @@ class SessionManager:
             print(f"Closing existing active session: {old_session_id}")
             if old_websocket.client_state != 3:  # 3 is WebSocketState.CLOSED
                 try:
-                    await old_websocket.send_json({"status": "closing", "reason": "new_session_started"})
-                    await old_websocket.close(code=1000)
-                    await finalize_session_db(db, old_session_id)
-                    if old_session_id in self.session_timers:
-                        self.session_timers[old_session_id].cancel()
-                        del self.session_timers[old_session_id]
-                    del self.active_connections[old_session_id]
-                    print(f"Successfully closed previous session: {old_session_id}")
+                    async with AsyncSessionLocal() as db:
+                        await old_websocket.send_json({"status": "closing", "reason": "new_session_started"})
+                        await old_websocket.close(code=1000)
+                        await finalize_session_db(db, old_session_id)
+                        if old_session_id in self.session_timers:
+                            self.session_timers[old_session_id].cancel()
+                            del self.session_timers[old_session_id]
+                        if old_session_id in self.active_connections:
+                            del self.active_connections[old_session_id]
+                        if old_session_id in self.session_dbs:
+                            await self.session_dbs[old_session_id].close()
+                            del self.session_dbs[old_session_id]
+                        print(f"Successfully closed previous session: {old_session_id}")
                 except Exception as e:
                     print(f"Error closing previous session {old_session_id}: {e}")
                     if old_session_id in self.session_timers:
@@ -89,47 +95,53 @@ class SessionManager:
                         del self.session_timers[old_session_id]
                     if old_session_id in self.active_connections:
                         del self.active_connections[old_session_id]
+                    if old_session_id in self.session_dbs:
+                        await self.session_dbs[old_session_id].close()
+                        del self.session_dbs[old_session_id]
 
         session_id = str(uuid.uuid4())
         self.active_connections[session_id] = websocket
         print(f"WebSocket connected: {session_id}")
 
         try:
+            db = AsyncSessionLocal()  # Create a database session for this connection
+            self.session_dbs[session_id] = db
             await create_session_db(db, session_id)
             await self._start_inactivity_timer(session_id, db)
             await websocket.send_json({"status": "connected", "session_id": session_id})
             return session_id
         except Exception as e:
             print(f"Error during session connect for {session_id}: {e}")
-            await self.disconnect(session_id, db, is_timeout=False)
+            await self.disconnect(session_id, is_timeout=False)
             return None
 
-    
-    async def disconnect(self, session_id: str, db: AsyncSession, is_timeout: bool = False):
+    async def disconnect(self, session_id: str, is_timeout: bool = False):
         print(f"Disconnecting session: {session_id}, Timeout: {is_timeout}")
         if session_id in self.session_timers:
             self.session_timers[session_id].cancel()
             del self.session_timers[session_id]
         if session_id in self.active_connections:
             websocket = self.active_connections.pop(session_id)
-            try:
-                if not is_timeout and websocket.client_state != 3: 
+            if is_timeout and websocket.client_state != 3:
+                try:
                     await websocket.close(code=1000)
-                    print(f"Closed WebSocket connection for {session_id}")
-            except RuntimeError as e:
-                if "WebSocket is not connected" not in str(e):
-                    print(f"RuntimeError closing WebSocket for {session_id}: {e}")
-            except Exception as e:
-                print(f"Error closing WebSocket for {session_id}: {e}")
+                    print(f"Closed WebSocket connection for {session_id} (timeout)")
+                except RuntimeError as e:
+                    if "WebSocket is not connected" not in str(e):
+                        print(f"RuntimeError closing WebSocket for {session_id} (timeout): {e}")
+                except Exception as e:
+                    print(f"Error closing WebSocket for {session_id} (timeout): {e}")
 
-        try:
-            await db.refresh(db.get_bind())
-            await finalize_session_db(db, session_id)
-        except Exception as e:
-            print(f"Error finalizing session {session_id} in DB: {e}")
-            await db.rollback()
-    
-    
+        if session_id in self.session_dbs:
+            db = self.session_dbs.pop(session_id)
+            try:
+                await finalize_session_db(db, session_id)
+            except Exception as e:
+                print(f"Error finalizing session {session_id} in DB: {e}")
+                await db.rollback()
+            finally:
+                await db.close()
+
     async def handle_message(self, session_id: str, data: bytes, db: AsyncSession):
         websocket = self.active_connections.get(session_id)
         if not websocket:
@@ -182,7 +194,6 @@ class SessionManager:
                 await websocket.send_json({"status": "error", "message": f"Internal server error: {e}"})
             except Exception as send_e:
                 print(f"Failed to send error message back to client {session_id}: {send_e}")
-
 
 from Predictor.predictor_utilities.predict import predictor as global_predictor
 session_manager = SessionManager(predictor=global_predictor)

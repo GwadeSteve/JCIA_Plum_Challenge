@@ -28,32 +28,31 @@ app.add_middleware(
 async def on_startup():
     print("Starting up PlumVision API...")
     await create_db_and_tables()
-    print("Startup complete.")
+    print("PlumVision API running...")
+
 
 @app.websocket("/ws/stream")
 async def websocket_stream_endpoint(
-    websocket: WebSocket,
-    db: AsyncSession = Depends(get_db)
+    websocket: WebSocket
 ):
-    session_id = None
+    session_id: Optional[str] = None
     try:
-        await websocket.accept()
-        session_id = str(uuid.uuid4())
-        print(f"WebSocket connected: {session_id}")
-        await create_session_db(db, session_id)
-        await websocket.send_json({"status": "You are connected to a new session", "session_id": session_id})
-        while True:
-            await websocket.receive_text()
-    except WebSocketDisconnect:
-        print(f"WebSocket disconnected: {session_id}")
-    except Exception as e:
-        print(f"WebSocket error: {e}")
+        session_id = await session_manager.connect(websocket)
+        if session_id:
+            try:
+                async with AsyncSessionLocal() as db:  # Create a session for message handling
+                    while True:
+                        data = await websocket.receive_bytes()
+                        await session_manager.handle_message(session_id, data, db)
+            except WebSocketDisconnect:
+                print(f"WebSocket disconnected: {session_id}")
+            except Exception as e:
+                print(f"WebSocket error for session {session_id}: {e}")
+        else:
+            print("Failed to establish session.")
     finally:
         if session_id:
-            print(f"Finalizing session {session_id} on disconnect.")
-            async with AsyncSessionLocal() as final_db:
-                await finalize_session_db(final_db, session_id)
-        await db.close()
+            await session_manager.disconnect(session_id)
 
 
 @app.post("/api/predict", response_model=dict)
