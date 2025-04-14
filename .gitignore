@@ -102,3 +102,19 @@ desktop.ini
 *.swo
 
 API/websocket_test_results.json
+
+# Untrack frontend files
+frontend/node_modules
+frontend/build
+frontend/dist
+frontend/.env
+frontend/.env.local
+frontend/.env.development
+frontend/.env.development.local
+frontend/.env.test
+frontend/.env.test.local
+frontend/coverage
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/public/build
