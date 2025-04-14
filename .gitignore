@@ -64,6 +64,7 @@ desktop.ini
 # Ignorer les fichiers caches (exemples de caches générés par PyTorch, TensorFlow, etc.)
 **/*cache*
 **/Models/*.json
+**/API/*.json
 
 # Ignorer les logs
 *.log
@@ -93,3 +94,5 @@ desktop.ini
 # Ignorer tous les fichiers temporaires et répertoires de sauvegarde
 *.swp
 *.swo
+
+API/websocket_test_results.json
