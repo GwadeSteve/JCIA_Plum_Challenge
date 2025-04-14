@@ -93,7 +93,7 @@ desktop.ini
 /Models/Trained-Superclass/**/runs_*
 /Models/Trained-Superclass/**/run*
 /Models/Untrained/
-/Models/**/*.png"
+/Models/**/*.png
 
 #/Models
 
