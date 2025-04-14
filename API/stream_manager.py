@@ -16,7 +16,7 @@ from database import (
 )
 from Predictor.predictor_utilities.predict import PlumPredictor
 
-SESSION_TIMEOUT_MINUTES = 5
+SESSION_TIMEOUT_MINUTES = 0.25
 
 class SessionManager:
     _instance: Optional["SessionManager"] = None
