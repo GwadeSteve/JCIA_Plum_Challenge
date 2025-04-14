@@ -30,12 +30,12 @@
 
 ## Fonctionnalités Clés
 
-* Analyse en temps réel du flux vidéo d'une caméra connectée pour classifier les prunes.
-* Classification des prunes en six catégories de qualité : Bonne qualité, non mûre, tachetée, fissurée, meurtrie, pourrie.
-* Interface utilisateur web simple pour visualiser le flux de la caméra, les prédictions et les statistiques.
-* Suivi en temps réel du nombre total de prunes traitées et de leur répartition par catégorie (Statistiques de Session).
-* Génération automatique de commentaires sur la qualité globale du tri via l'API Gemini (Commentaires IA).
-* Possibilité d'uploader une image pour une prédiction unique.
+- Analyse en temps réel du flux vidéo d'une caméra connectée pour classifier les prunes.
+- Classification des prunes en six catégories de qualité : Bonne qualité, non mûre, tachetée, fissurée, meurtrie, pourrie.
+- Interface utilisateur web simple pour visualiser le flux de la caméra, les prédictions et les statistiques.
+- Suivi en temps réel du nombre total de prunes traitées et de leur répartition par catégorie (Statistiques de Session).
+- Génération automatique de commentaires sur la qualité globale du tri via l'API Gemini (Commentaires IA).
+- Possibilité d'uploader une image pour une prédiction unique.
 
 ---
 
@@ -49,11 +49,11 @@
 
 ## Technologies Utilisées
 
-* **Modèles de Deep Learning :** PyTorch
-* **Backend :** FastAPI
-* **Frontend :** ReactJS
-* **IA Générative :** Gemini API
-* **Base de Données (Prototype) :** SQLite
+- **Modèles de Deep Learning :** PyTorch
+- **Backend :** FastAPI
+- **Frontend :** ReactJS
+- **IA Générative :** Gemini API
+- **Base de Données (Prototype) :** SQLites
 
 ---
 
