@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
     --pad: 0 5%;
-    --background: #F0F2FF;
+    --white: #F0F2FF;
+    --white-80: #f0f2ffc7;
+    --white-90: #f0f2ffe2;
+    --violet-accent: #8a33fa;
+    --black: #0b0b0b;
+    --black-80: #0b0b0bbe;
     --font: "Urbanist", sans-serif;
-    --xxl-font: 64px;
+    --font-secondary: "Inter Tight", sans-serif;
+    --xxl-font: 80px;
     --xl-font: 48px;
     --x-font: 32px;
     --l-font: 24px;
     --m-font: 18px;
     --s-font: 16px;
-    --ss-font: 12px;
-    --sss-font: 10px;
 }
 
 * {
@@ -20,11 +25,11 @@
     list-style: none;
     text-decoration: none;
     user-select: none;
-    font-family: var(--font);
+    font-family: var(--font-secondary);
 }
 
 .gradient-text {
-    background: linear-gradient(96deg, rgba(25, 16, 78, 0.90) 3.2%, rgba(101, 33, 173, 0.90) 96.8%);
+    background: linear-gradient(120deg, var(--violet-accent) 20%, #25074d 80%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -35,8 +40,9 @@ html {
 }
 
 body {
-    background: var(--background);
+    background: var(--white);
     font-family: var(--font);
+    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -48,10 +54,52 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--highlight-orange-100);
+    background-color: var(--violet-accent);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--highlight-orange-100);
+    background-color: var(--violet-accent);
+}
+
+.xxl-font {
+    font-size: var(--xxl-font);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -3px;
+}
+
+.xl-font {
+    font-size: var(--xl-font);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -2px;
+}
+
+.x-font {
+    font-size: var(--x-font);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.l-font {
+    font-size: var(--l-font);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.m-font {
+    font-size: var(--m-font);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.s-font {
+    font-size: var(--s-font);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
 }

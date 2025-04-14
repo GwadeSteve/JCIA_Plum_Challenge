@@ -1,0 +1,11 @@
+/* frontend/src/components/Footer/Footer.css */
+
+@import '../../index.css';
+.footer {
+    color: var(--black-80);
+    text-align: center;
+    padding: 1rem var(--pad);
+    font-size: var(--s-font);
+    background: red;
+    padding-bottom: 20px;
+}
