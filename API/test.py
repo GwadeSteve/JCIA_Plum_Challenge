@@ -65,7 +65,7 @@ async def send_image_stream(uri="ws://localhost:8000/ws/stream", image_dir="Data
                 print("Failed to establish a session with the server.")
                 results.append({"error": "Failed to establish session"})
 
-    except websockets.exceptions.ConnectionRefusedError:
+    except websockets.exceptions.ConnectionClosedError:
         print(f"Error: Could not connect to {uri}. Make sure the PlumVision API server is running.")
         results.append({"error": f"Connection refused at {uri}"})
     except Exception as e:
