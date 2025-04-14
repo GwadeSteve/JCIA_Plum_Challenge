@@ -45,6 +45,7 @@ wandb/
 *.webp
 *.bmp
 *.gif
+*.png
 
 .DS_Store
 Thumbs.db
@@ -84,10 +85,15 @@ Thumbs.db
 desktop.ini
 
 # Ignorer les répertoires de modèles (entraînés et non entraînés)
-**/Models/Trained/**/
-**/Models/Untrained/**/
-**/Models/Trained-DefectClass/**/
-**/Models/Trained-Superclass/**/
+/Models/Trained/**/runs_*
+/Models/Trained/**/run*
+/Models/Untrained/**/runs_*
+/Models/Untrained/**/run*
+/Models/Trained-DefectClass/**/runs_*
+/Models/Trained-DefectClass/**/run*
+/Models/Trained-Superclass/**/runs_*
+/Models/Trained-Superclass/**/run*
+/Models/Untrained/
 
 #/Models
 
