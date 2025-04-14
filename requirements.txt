@@ -1,9 +1,12 @@
 absl-py==2.1.0
+aiosqlite==0.21.0
 amqp==5.1.1
 anyio==4.9.0
 asgiref==3.5.2
 asttokens==2.2.1
 astunparse==1.6.3
+asyncio==3.4.3
+asyncpg==0.30.0
 attrs==23.2.0
 azure-core==1.27.1
 azure-storage-blob==12.16.0
@@ -42,7 +45,7 @@ django-filter==23.2
 django-oauth-toolkit==2.3.0
 django-storages==1.13.2
 djangorestframework==3.14.0
-dlib @ file:///C:/Users/Administrator/Desktop/WEBPROJECTS/FACIAL%20RECOGNITION%20AUTH%20SYSTEM/FacialAuth/dlib-19.24.1-cp311-cp311-win_amd64.whl#sha256=6f1a5ee167975d7952b28e0ce4495f1d9a77644761cf5720fb66d7c6188ae496
+#dlib @ file:///C:/Users/Administrator/Desktop/WEBPROJECTS/FACIAL%20RECOGNITION%20AUTH%20SYSTEM/FacialAuth/dlib-19.24.1-cp311-cp311-win_amd64.whl#sha256=6f1a5ee167975d7952b28e0ce4495f1d9a77644761cf5720fb66d7c6188ae496
 executing==1.2.0
 face-recognition==1.3.0
 face_recognition_models==0.3.0
@@ -58,10 +61,15 @@ fsspec==2024.3.1
 gast==0.6.0
 gdown==5.2.0
 google-pasta==0.2.0
+greenlet==3.1.1
 grpcio==1.65.1
 gunicorn==22.0.0
 h11==0.14.0
 h5py==3.11.0
+httpcore==1.0.8
+httptools==0.6.4
+httpx==0.28.1
+huggingface-hub==0.30.2
 idna==3.4
 image==1.5.33
 intel-openmp==2021.4.0
@@ -138,6 +146,7 @@ regex==2023.5.5
 requests==2.31.0
 retina-face==0.0.17
 rich==13.7.1
+safetensors==0.5.3
 scikit-learn==1.3.2
 scipy==1.11.3
 six==1.16.0
@@ -149,6 +158,7 @@ soupsieve==2.5
 spacy==3.5.2
 spacy-legacy==3.0.12
 spacy-loggers==1.0.4
+SQLAlchemy==2.0.40
 sqlparse==0.4.2
 srsly==2.4.6
 stack-data==0.6.2
@@ -164,6 +174,7 @@ termcolor==2.4.0
 tf_keras==2.17.0
 thinc==8.1.10
 threadpoolctl==3.2.0
+timm==1.0.15
 torch==2.3.0
 torchvision==0.18.0
 tornado==6.3.2
@@ -179,6 +190,8 @@ vine==5.0.0
 virtualenv==20.21.0
 virtualenvwrapper-win==1.2.7
 wasabi==1.1.1
+watchfiles==1.0.5
 wcwidth==0.2.6
+websockets==15.0.1
 Werkzeug==3.0.1
 wrapt==1.15.0
