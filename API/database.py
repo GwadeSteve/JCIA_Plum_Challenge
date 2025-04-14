@@ -88,29 +88,29 @@ async def create_session_db(db: AsyncSession, session_id: str) -> SessionMetrics
     return new_session
 
 async def update_session_stats_db(db: AsyncSession, session_id: str, superclass: str):
-    async with db.begin():
-        session = await db.execute(select(SessionMetrics).where(SessionMetrics.session_id == session_id))
-        session_obj = session.scalar_one_or_none()
+    session = await db.execute(select(SessionMetrics).where(SessionMetrics.session_id == session_id))
+    session_obj = session.scalar_one_or_none()
 
-        if not session_obj or not session_obj.is_active:
-            print(f"Warning: Attempted to update inactive or non-existent session {session_id}")
-            return None
+    if not session_obj or not session_obj.is_active:
+        print(f"Warning: Attempted to update inactive or non-existent session {session_id}")
+        return None
 
-        current_stats = session_obj.predictions_by_category if session_obj.predictions_by_category else {}
-        current_stats[superclass] = current_stats.get(superclass, 0) + 1
+    current_stats = session_obj.predictions_by_category if session_obj.predictions_by_category else {}
+    current_stats[superclass] = current_stats.get(superclass, 0) + 1
 
-        stmt = (
-            update(SessionMetrics)
-            .where(SessionMetrics.session_id == session_id)
-            .values(
-                total_images_processed=SessionMetrics.total_images_processed + 1,
-                predictions_by_category=current_stats,
-                last_updated=datetime.now(timezone.utc)
-            )
-            .execution_options(synchronize_session="fetch")
+    stmt = (
+        update(SessionMetrics)
+        .where(SessionMetrics.session_id == session_id)
+        .values(
+            total_images_processed=SessionMetrics.total_images_processed + 1,
+            predictions_by_category=current_stats,
+            last_updated=datetime.now(timezone.utc)
         )
-        await db.execute(stmt)
-
+        .execution_options(synchronize_session="fetch")
+    )
+    await db.execute(stmt)
+    await db.commit()
+    
     updated_session = await db.execute(select(SessionMetrics).where(SessionMetrics.session_id == session_id))
     return updated_session.scalar_one()
 
@@ -167,6 +167,8 @@ async def add_prediction_db(db: AsyncSession, session_id: str, image_name: str, 
         timestamp=datetime.now(timezone.utc)
     )
     db.add(db_prediction)
-    await db.commit()
-    await db.refresh(db_prediction)
+    
+    # Remove this line - don't refresh before commit
+    # await db.refresh(db_prediction)
+    
     return db_prediction, superclass

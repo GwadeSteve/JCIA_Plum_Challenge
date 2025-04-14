@@ -40,10 +40,9 @@ async def websocket_stream_endpoint(
         session_id = await session_manager.connect(websocket)
         if session_id:
             try:
-                async with AsyncSessionLocal() as db:
-                    while True:
-                        data = await websocket.receive_bytes()
-                        await session_manager.handle_message(session_id, data, db)
+                while True:
+                    data = await websocket.receive_bytes()
+                    await session_manager.handle_message(session_id, data)
             except WebSocketDisconnect:
                 print(f"WebSocket disconnected: {session_id}")
             except Exception as e:

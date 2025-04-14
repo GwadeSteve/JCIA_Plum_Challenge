@@ -1,49 +1,64 @@
 import asyncio
 import websockets
-import httpx
-import json
+import os
+import time
 
-SERVER_URL = "http://127.0.0.1:8000"
-WS_URL = "ws://127.0.0.1:8000/ws/stream"
-
-async def test_websocket_connect_disconnect_existing_server():
-    session_id = None
+async def send_image_stream(uri="ws://localhost:8000/ws/stream", image_dir="Data/", delay=0.5):
     try:
-        async with websockets.connect(WS_URL) as websocket:
-            connected_message = await websocket.recv()
-            connected_data = json.loads(connected_message)
-            assert connected_data["status"] == "connected"
-            session_id = connected_data["session_id"]
-            print(f"Connected with session ID: {session_id}")
-            await websocket.close()
-            print("Disconnected from WebSocket.")
+        async with websockets.connect(uri) as websocket:
+            print(f"Connected to WebSocket: {uri}")
+            
+            response = await websocket.recv()
+            print(f"Server says: {response}")
+            session_id = None
+            try:
+                import json
+                data = json.loads(response)
+                if data.get("status") == "connected":
+                    session_id = data.get("session_id")
+                    print(f"Session ID: {session_id}")
+            except json.JSONDecodeError:
+                print("Could not decode server response as JSON.")
 
-        await asyncio.sleep(0.5)
+            if session_id:
+                image_files = [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))]
+                print(f"Found {len(image_files)} images in '{image_dir}'")
 
-        async with httpx.AsyncClient() as client:
-            response = await client.get(f"{SERVER_URL}/api/sessions")
-            assert response.status_code == 200
-            sessions = response.json()
+                for image_file in image_files:
+                    image_path = os.path.join(image_dir, image_file)
+                    try:
+                        with open(image_path, "rb") as f:
+                            image_data = f.read()
+                            await websocket.send(image_data)
+                            print(f"Sent image: {image_file} ({len(image_data)} bytes)")
 
-            found_session = None
-            for session in sessions:
-                if session["session_id"] == session_id:
-                    found_session = session
-                    break
+                            try:
+                                prediction_response = await asyncio.wait_for(websocket.recv(), timeout=5)
+                                print(f"Prediction Response for {image_file}: {prediction_response}")
+                            except asyncio.TimeoutError:
+                                print(f"Timeout waiting for prediction response for {image_file}")
+                            except websockets.exceptions.ConnectionClosedOK:
+                                print("WebSocket connection closed by server.")
+                                break
+                            except websockets.exceptions.ConnectionClosedError as e:
+                                print(f"WebSocket connection closed with error: {e}")
+                                break
 
-            assert found_session is not None
-            assert found_session["is_active"] is False
-            assert found_session["end_time"] is not None
-            assert found_session["duration_seconds"] is not None
-            print(f"Session details after disconnect: {found_session}")
-            print("WebSocket connect and disconnect test passed!")
+                            await asyncio.sleep(delay)
 
-    except websockets.exceptions.ConnectionClosedError:
-        print("Error: Could not connect to the WebSocket server. Ensure the server is running.")
-    except httpx.ConnectError:
-        print("Error: Could not connect to the HTTP server. Ensure the server is running.")
+                    except FileNotFoundError:
+                        print(f"Error: Image file not found: {image_path}")
+                    except Exception as e:
+                        print(f"Error sending image {image_file}: {e}")
+                        break
+
+            else:
+                print("Failed to establish a session with the server.")
+
+    except websockets.exceptions.ConnectionRefusedError:
+        print(f"Error: Could not connect to {uri}. Make sure the PlumVision API server is running.")
     except Exception as e:
-        print(f"Test failed: {e}")
+        print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
-    asyncio.run(test_websocket_connect_disconnect_existing_server())
+    asyncio.run(send_image_stream())
