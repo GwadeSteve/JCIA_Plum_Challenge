@@ -1,13 +1,16 @@
+# main.py
 import uuid
-from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, WebSocket, WebSocketDisconnect, Query 
-from starlette.websockets import WebSocketState 
+from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, WebSocket, WebSocketDisconnect, Query
+from starlette.websockets import WebSocketState
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 from Predictor.predictor_utilities.predict import predictor
 from database import (
-    Prediction, SessionMetrics, get_db, 
-    create_db_and_tables,add_prediction_db, 
-    finalize_session_db, create_session_db, AsyncSessionLocal )
+    Prediction, SessionMetrics, get_db,
+    create_db_and_tables,add_prediction_db,
+    finalize_session_db, create_session_db, AsyncSessionLocal,
+    update_session_stats_db as update_session_stats_db_db # Renamed to avoid conflict
+)
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from stream_manager import session_manager
@@ -31,27 +34,9 @@ async def on_startup():
     print("PlumVision API running...")
 
 
-@app.websocket("/ws/stream")
-async def websocket_stream_endpoint(
-    websocket: WebSocket
-):
-    session_id: Optional[str] = None
-    try:
-        session_id = await session_manager.connect(websocket)
-        if session_id:
-            try:
-                while True:
-                    data = await websocket.receive_bytes()
-                    await session_manager.handle_message(session_id, data)
-            except WebSocketDisconnect:
-                print(f"WebSocket disconnected: {session_id}")
-            except Exception as e:
-                print(f"WebSocket error for session {session_id}: {e}")
-        else:
-            print("Failed to establish session.")
-    finally:
-        if session_id:
-            await session_manager.disconnect(session_id)
+@app.get("/")
+async def root():
+    return {"message": "PlumVision Backend is running!"}
 
 
 @app.post("/api/predict", response_model=dict)
@@ -74,8 +59,12 @@ async def predict_endpoint(
             raise HTTPException(status_code=500, detail=f"Prediction error: {prediction_result['error']}")
 
         if prediction_result and "prediction" in prediction_result and prediction_result["prediction"]:
-            db_prediction, superclass = await add_prediction_db(db, session_id, file.filename, prediction_result)
+            db_prediction, superclass, predicted_class = await add_prediction_db(db, session_id, file.filename, prediction_result)
             await db.commit()
+
+            # If session_id is provided, update session stats for single upload
+            if session_id:
+                await update_session_stats_db_db(db, session_id, superclass, predicted_class)
 
             top_prediction = prediction_result["prediction"][0]
             prediction_result["resume"] = {
@@ -87,7 +76,6 @@ async def predict_endpoint(
             prediction_result["resume"] = {"error": "Could not get valid prediction."}
             print(f"Warning: Prediction result was missing expected fields: {prediction_result}")
 
-
         return prediction_result
 
     except HTTPException as http_exc:
@@ -95,8 +83,8 @@ async def predict_endpoint(
     except Exception as e:
         print(f"Error processing single image upload: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing image: {str(e)}")
-    
-    
+
+
 @app.get("/api/predictions", response_model=List[dict])
 async def get_predictions(
     session_id: Optional[str] = Query(None, description="Filter predictions by session ID"),
@@ -141,15 +129,16 @@ async def get_sessions(
             "session_id": s.session_id, "is_active": s.is_active,
             "total_images_processed": s.total_images_processed,
             "predictions_by_category": s.predictions_by_category,
+            "predictions_by_class": s.predictions_by_class, # Included here
             "start_time": s.start_time.isoformat(),
             "last_updated": s.last_updated.isoformat(),
             "end_time": s.end_time.isoformat() if s.end_time else None,
             "duration_seconds": s.duration_seconds
-         } for s in sessions
+        } for s in sessions
     ]
 
 
-@app.get("/api/sessions/{session_id}", response_model=dict)
+@app.get("/api/metrics/{session_id}", response_model=dict)
 async def get_session_details(session_id: str, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(SessionMetrics).where(SessionMetrics.session_id == session_id))
     session = result.scalar_one_or_none()
@@ -157,16 +146,35 @@ async def get_session_details(session_id: str, db: AsyncSession = Depends(get_db
         raise HTTPException(status_code=404, detail="Session not found")
 
     return {
-        "session_id": session.session_id, "is_active": session.is_active,
+        "session_id": session.session_id,
+        "is_active": session.is_active,
         "total_images_processed": session.total_images_processed,
         "predictions_by_category": session.predictions_by_category,
+        "predictions_by_class": session.predictions_by_class, # Included here
         "start_time": session.start_time.isoformat(),
         "last_updated": session.last_updated.isoformat(),
         "end_time": session.end_time.isoformat() if session.end_time else None,
         "duration_seconds": session.duration_seconds
     }
 
-
-@app.get("/")
-async def root():
-    return {"message": "PlumVision Backend is running!"}
+@app.websocket("/ws/stream")
+async def websocket_stream_endpoint(
+    websocket: WebSocket
+):
+    session_id: Optional[str] = None
+    try:
+        session_id = await session_manager.connect(websocket)
+        if session_id:
+            try:
+                while True:
+                    data = await websocket.receive_bytes()
+                    await session_manager.handle_message(session_id, data)
+            except WebSocketDisconnect:
+                print(f"WebSocket disconnected: {session_id}")
+            except Exception as e:
+                print(f"WebSocket error for session {session_id}: {e}")
+        else:
+            print("Failed to establish session.")
+    finally:
+        if session_id:
+            await session_manager.disconnect(session_id)

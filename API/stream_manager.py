@@ -16,7 +16,7 @@ from database import (
 )
 from Predictor.predictor_utilities.predict import PlumPredictor
 
-SESSION_TIMEOUT_MINUTES = 0.25
+SESSION_TIMEOUT_MINUTES = 5
 
 class SessionManager:
     _instance: Optional["SessionManager"] = None
@@ -144,8 +144,6 @@ class SessionManager:
 
         async with AsyncSessionLocal() as db:
             try:
-                # Remove the inner transaction context manager
-                # async with db.begin():  <- REMOVE THIS LINE
                 await self._start_inactivity_timer(session_id, db)
                 try:
                     temp_filename = f"stream_{session_id}_{datetime.now(timezone.utc).timestamp()}.jpg"
@@ -161,10 +159,10 @@ class SessionManager:
                         await websocket.send_json({"status": "error", "message": "Invalid prediction result structure"})
                         return
 
-                    db_prediction, superclass = await add_prediction_db(db, session_id, temp_filename, prediction_result)
+                    db_prediction, superclass, predicted_class = await add_prediction_db(db, session_id, temp_filename, prediction_result)
                     await db.commit()
-                    await db.refresh(db_prediction)  # Refresh after commit
-                    updated_session_metrics = await update_session_stats_db(db, session_id, superclass)
+                    # await db.refresh(db_prediction) # No need to refresh here
+                    updated_session_metrics = await update_session_stats_db(db, session_id, superclass, predicted_class)
 
                     response_data = {
                         "status": "prediction_result",
@@ -172,6 +170,7 @@ class SessionManager:
                         "session_stats": {
                             "total_images_processed": updated_session_metrics.total_images_processed,
                             "predictions_by_category": updated_session_metrics.predictions_by_category,
+                            "predictions_by_class": updated_session_metrics.predictions_by_class,
                             "last_updated": updated_session_metrics.last_updated.isoformat(),
                         } if updated_session_metrics else None
                     }
@@ -189,8 +188,6 @@ class SessionManager:
                         await websocket.send_json({"status": "error", "message": f"Internal server error: {e}"})
                     except Exception as send_e:
                         print(f"Failed to send error message back to client {session_id}: {send_e}")
-                # Remove the corresponding closing brace of the removed context manager
-                # <- REMOVE THIS LINE
             except Exception as overall_e:
                 print(f"Overall error in handle_message: {overall_e}")
             finally:

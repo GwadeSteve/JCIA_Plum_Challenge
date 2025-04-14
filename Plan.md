@@ -20,7 +20,7 @@
     - [Periode 5 – Intégration et Tests](#periode-5--intégration-et-tests)
     - [Periode 6 – Préparation de la Démonstration et de la Présentation](#periode-6--préparation-de-la-démonstration-et-de-la-présentation)
   - [Checklist finale (Prototype)](#checklist-finale-prototype)
-  - [Structure de la Base de Données (SQLite - Prototype)](#structure-de-la-base-de-données-sqlite---prototype)
+  - [Structure de la Base de Données (SQLite/ SQLAlchemy - Prototype)](#structure-de-la-base-de-données-sqlite-sqlalchemy---prototype)
   - [Outils Backend](#outils-backend)
   - [Structure Actuelle du Projet](#structure-actuelle-du-projet)
   - [Équipe](#équipe)
@@ -59,7 +59,7 @@ Développer un prototype capable de classifier en temps réel des prunes africai
 | **Temps Réel** | **WebSockets** (communication bidirectionnelle et un flux continu de données) |
 | **IA Générative** | Gemini API                                                                   |
 | **Entraînement** | Jupyter Notebooks + PyTorch + Scripts Python                                 |
-| **Stockage/DB** | SQLite (Prototype)                                                           |
+| **Stockage/DB** | SQLite/ SQLAlchemy (Prototype)                                                           |
 | **Dataset** | African Plums Dataset (Kaggle)                                               |
 
 ---
@@ -104,7 +104,7 @@ Le système comprend un frontend **React** pour l'interface utilisateur, un back
         * Les statistiques de la session mises à jour.
 * **/metrics** : retourne les statistiques de la session actuelle (nombre total, répartition).
 * **Gemini Integration** : génère un commentaire simple basé sur les statistiques de classification en temps réel.
-* **Session Management** : gère l'état de la session (active/inactive) et stocke les données de session en mémoire ou dans un fichier SQLite temporaire.
+* **Session Management** : gère l'état de la session (active/inactive) et stocke les données de session en mémoire ou dans un fichier SQLite/ SQLAlchemy temporaire.
 
 ---
 
@@ -145,7 +145,7 @@ Le système comprend un frontend **React** pour l'interface utilisateur, un back
 ### Periode 3 – Développement du Backend (API et Temps Réel avec Suivi)
 * Mise en place d'une API avec **FastAPI**.
 * Création d'un endpoint **/predict** pour recevoir une image et retourner la prédiction du modèle.
-* Implémentation de la gestion des données de session (en mémoire ou via **SQLite**), incluant le suivi du nombre total d'images traitées et des prédictions par catégorie.
+* Implémentation de la gestion des données de session (en mémoire ou via **SQLite/ SQLAlchemy**), incluant le suivi du nombre total d'images traitées et des prédictions par catégorie.
 * Création d'un endpoint **/metrics** pour retourner les statistiques de la session.
 * **Implémentation de la gestion des WebSockets pour le flux de caméra en temps réel**, incluant la réception des images, la prédiction, la mise à jour des statistiques de session et l'envoi de ces statistiques au frontend.
 * Intégration basique de l'**API Gemini** pour générer un commentaire sur les résultats en temps réel (basé sur les statistiques).
@@ -198,7 +198,7 @@ Le système comprend un frontend **React** pour l'interface utilisateur, un back
 
 ---
 
-## Structure de la Base de Données (SQLite - Prototype)
+## Structure de la Base de Données (SQLite/ SQLAlchemy - Prototype)
 
 Pour le prototype, une structure simple avec une seule table ou deux maxi pour stocker les informations de session.
 
@@ -223,7 +223,7 @@ Pour le prototype, une structure simple avec une seule table ou deux maxi pour s
 | `predicted_class` | TEXT     | Catégorie prédite pour la prune                                 |
 | `prediction_time` | DATETIME | Timestamp de la prédiction                                      |
 
-Pour le prototype, on pourrait commencer par stocker les données de session dans un dictionnaire en mémoire et envisager **SQLite** si on souhaite une persistance basique entre les exécutions de l'API.
+Pour le prototype, on pourrait commencer par stocker les données de session dans un dictionnaire en mémoire et envisager **SQLite/ SQLAlchemy** si on souhaite une persistance basique entre les exécutions de l'API.
 
 ---
 
@@ -237,7 +237,7 @@ En complément :
 
 * **Uvicorn:** Sera notre serveur ASGI pour faire fonctionner l'application FastAPI, pour de bonnes performances pour les applications asynchrones et WebSocket.
 * **PyTorch:** Pour charger et exécuter notre modèle de deep learning pour la prédiction.
-* **SQLite:** Pour le stockage basique des données de session.
+* **SQLite/ SQLAlchemy:** Pour le stockage basique des données de session.
 * **Google AI Gemini API:** Pour générer les commentaires textuels basés sur les résultats du tri.
 
 Pour le frontend :
