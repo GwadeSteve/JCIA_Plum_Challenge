@@ -29,8 +29,9 @@ const Navbar = () => {
 
     const navLinks = [
         { to: '/', label: 'Presentation' },
-        { to: '/prediction', label: 'Prediction' },
+        { to: '/demo', label: 'Demo' },
         { to: '/realtime', label: 'Stream Session' },
+        { to: '/team', label: 'Team' },
     ];
 
     const toggleMenu = () => {
