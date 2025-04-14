@@ -71,10 +71,11 @@ async def predict_endpoint(
         prediction_result = predictor.predict_image(contents, file.filename)
 
         if "error" in prediction_result:
-             raise HTTPException(status_code=500, detail=f"Prediction error: {prediction_result['error']}")
+            raise HTTPException(status_code=500, detail=f"Prediction error: {prediction_result['error']}")
 
         if prediction_result and "prediction" in prediction_result and prediction_result["prediction"]:
             db_prediction, superclass = await add_prediction_db(db, session_id, file.filename, prediction_result)
+            await db.commit()
 
             top_prediction = prediction_result["prediction"][0]
             prediction_result["resume"] = {
@@ -94,8 +95,8 @@ async def predict_endpoint(
     except Exception as e:
         print(f"Error processing single image upload: {e}")
         raise HTTPException(status_code=500, detail=f"Error processing image: {str(e)}")
-
-
+    
+    
 @app.get("/api/predictions", response_model=List[dict])
 async def get_predictions(
     session_id: Optional[str] = Query(None, description="Filter predictions by session ID"),
