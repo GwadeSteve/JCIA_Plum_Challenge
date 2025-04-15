@@ -53,7 +53,7 @@ const PresentationPage = () => {
                 <p>A smart platform for real-time quality analysis of African plums using computer vision.</p>
             </div>
 
-            <div className='demo-video'>
+            <div className='demo-video' data-aos="fade-in">
                 <img src="/demo.gif" alt="PlumVision Demo" />
             </div>
 
@@ -64,7 +64,7 @@ const PresentationPage = () => {
             <section className='features-section' id="features">
                 {features.map((feature, idx) => (
                     <div key={idx} className={`feature ${feature.reversed ? 'reversed' : ''}`}>
-                        <img src={feature.gif} alt={feature.title} />
+                        <img data-aos="fade-in" data-aos-duration="300" src={feature.gif} alt={feature.title} />
                         <div>
                             <h2 className="gradient-text">{feature.title}</h2>
                             <p>{feature.desc}</p>

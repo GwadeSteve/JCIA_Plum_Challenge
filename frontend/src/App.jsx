@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';  // Add useEffect
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
@@ -8,9 +8,26 @@ import RealtimePage from './pages/RealtimePage/RealtimePage';
 //import TeamPage from './pages/TeamPage/TeamPage';
 import PropositionTeamPage from './pages/PropositionTeamPage/PropositionTeamPage';
 import ScrollToTop from './components/ScrollToTop';
-import './App.css'
+import './App.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
+    useEffect(() => {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false,
+            offset: 120,
+            delay: 0,
+        });
+        
+        window.addEventListener('load', () => {
+            AOS.refresh();
+        });
+    }, []);
+
     return (
         <div className='App'> 
             <ScrollToTop />

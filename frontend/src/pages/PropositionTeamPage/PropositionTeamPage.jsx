@@ -106,7 +106,7 @@ const PropositionTeamPage = () => {
 
   return (
     <div className="proposition-team-page">
-      <section className="team-header">
+      <section className="team-header" data-aos="fade-up">
         <h1 className="xxl-font gradient-text">Meet Our Team</h1>
         <p className="m-font">Five students from ENSPD with one mission: revolutionizing plum quality assessment</p>
       </section>
@@ -116,7 +116,7 @@ const PropositionTeamPage = () => {
           <h2 className="xl-font gradient-text">{missionStatement.title}</h2>
           <p className="s-font">{missionStatement.text}</p>
           
-          <div className="goals-container">
+          <div className="goals-container" data-aos="fade-left">
             <h3 className="l-font">What We're Building for JCIA</h3>
             <ul className="goals-list">
               {missionStatement.goals.map((goal, index) => (
@@ -128,7 +128,7 @@ const PropositionTeamPage = () => {
             </ul>
           </div>
         </div>
-        <div className="mission-image">
+        <div className="mission-image" data-aos="fade-right">
           <img src="https://th.bing.com/th/id/R.6c91ee0b39134bc953d6d9991ba03295?rik=sqCaC%2bhvZNIxhw&riu=http%3a%2f%2fsymbolhunt.com%2fwp-content%2fuploads%2f2020%2f12%2fSafou.jpg&ehk=SX1zgcdcJoyaVB5O4HjsD3Gr76U0gaz6ls8TlCEV%2fDM%3d&risl=&pid=ImgRaw&r=0" alt="Safou Market in Cameroon" />
           <div className="image-overlay">
             <span className="xl-font">PlumVision</span>
@@ -136,9 +136,9 @@ const PropositionTeamPage = () => {
         </div>
       </section>
 
-      <section className="team-grid">
+      <section className="team-grid" data-aos="fade-up">
         {teamMembers.map((member, index) => (
-          <div className="team-card" key={index}>
+          <div className="team-card" key={index} data-aos="fade-in">
             <div className="member-image-container">
               <img src={member.image} alt={member.name} />
               <div className="image-overlay-gradient"></div>
@@ -187,10 +187,10 @@ const PropositionTeamPage = () => {
       </section>
 
       <section className="community-impact">
-        <h2 className="xl-font gradient-text">Real Impact for Cameroon</h2>
+        <h2 className="xl-font gradient-text" data-aos="fade-down" data-aos-duration="300">Real Impact for Cameroon</h2>
         
         <div className="impact-intro">
-          <p className="l-font">
+          <p className="l-font" data-aos="fade-up" data-aos-duration="300">
             For most Cameroonians, safou isn't just food – it's economic security. Our technology builds on centuries of traditional knowledge, bringing new precision to quality assessment that could transform thousands of livelihoods.
           </p>
         </div>
@@ -219,7 +219,7 @@ const PropositionTeamPage = () => {
               Understanding farmers and enterprises challenges before writing a single line of code was key. Our solution is not only technically sound, it's relevant and useful for the people who need it most.
             </p>
             <div className="impact-features">
-              <div className="impact-feature">
+              <div className="impact-feature" data-aos="fade-left" data-aos-duration="300">
                 <div className="feature-icon">
                   <MdOutlineSignalWifiOff />
                 </div>
@@ -228,7 +228,7 @@ const PropositionTeamPage = () => {
                   <p>PlumVision can function without internet access</p>
                 </div>
               </div>
-              <div className="impact-feature">
+              <div className="impact-feature" data-aos="fade-left" data-aos-duration="350">
                 <div className="feature-icon">
                   <BsLightningCharge />
                 </div>
@@ -237,7 +237,7 @@ const PropositionTeamPage = () => {
                   <p>Obtain results in seconds, and keep pace with busy days</p>
                 </div>
               </div>
-              <div className="impact-feature">
+              <div className="impact-feature" data-aos="fade-left" data-aos-duration="400">
                 <div className="feature-icon">
                   <MdOutlinePhoneAndroid />
                 </div>
@@ -246,7 +246,7 @@ const PropositionTeamPage = () => {
                   <p>Optimized for the devices farmers already own</p>
                 </div>
               </div>
-              <div className="impact-feature">
+              <div className="impact-feature" data-aos="fade-left" data-aos-duration="450">
                 <div className="feature-icon">
                   <MdOutlineAccessTime />
                 </div>

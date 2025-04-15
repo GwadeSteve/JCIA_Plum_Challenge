@@ -372,7 +372,7 @@ const RealtimePage = () => {
 
   return (
     <div className="RealtimePage">
-      <div className="stream-container">
+      <div className="stream-container" data-aos-duration="500">
         <div className="main-content">
           {viewMode === 'live' ? (
             <>
