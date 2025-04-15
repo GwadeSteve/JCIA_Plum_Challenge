@@ -6,16 +6,18 @@ import PredictionPage from './pages/PredictionPage/PredictionPage';
 import PresentationPage from './pages/PresentationPage/PresentationPage';
 import RealtimePage from './pages/RealtimePage/RealtimePage';
 import TeamPage from './pages/TeamPage/TeamPage';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css'
 
 function App() {
     return (
         <div className='App'> 
+            <ScrollToTop />
             <Navbar />
             <div className="Content">
                 <Routes>
                     <Route path="/" element={<PresentationPage />} />
-                    <Route path="/prediction" element={<PredictionPage />} />
+                    <Route path="/demo" element={<PredictionPage />} />
                     <Route path="/realtime" element={<RealtimePage />} />
                     <Route path="/team" element={<TeamPage />} />
                 </Routes>
