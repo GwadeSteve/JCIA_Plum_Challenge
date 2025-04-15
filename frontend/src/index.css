@@ -2,20 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
     --pad: 0 5%;
+    /* Colors */
     --white: #F0F2FF;
     --white-80: #f0f2ffc7;
     --white-90: #f0f2ffe2;
-    --violet-accent: #8a33fa;
+    --violet-accent: #6c00fa;
     --black: #0b0b0b;
+    --black-90: #0b0b0bd8;
     --black-80: #0b0b0bbe;
-    --font: "Urbanist", sans-serif;
-    --font-secondary: "Inter Tight", sans-serif;
-    --xxl-font: 80px;
-    --xl-font: 48px;
-    --x-font: 32px;
-    --l-font: 24px;
-    --m-font: 18px;
-    --s-font: 16px;
+    --black-60: #0b0b0b9c;
+    /* Fonts */
+    --font-title: "Urbanist", sans-serif;
+    --font-body: "Inter Tight", sans-serif;
+    /* Font Sizes */
+    --font-xxl: 80px;
+    --font-xl: 48px;
+    --font-lg: 32px;
+    --font-md: 24px;
+    --font-sm: 18px;
+    --font-xs: 16px;
 }
 
 * {
@@ -25,14 +30,8 @@
     list-style: none;
     text-decoration: none;
     user-select: none;
-    font-family: var(--font-secondary);
-}
-
-.gradient-text {
-    background: linear-gradient(120deg, var(--violet-accent) 20%, #25074d 80%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-family: var(--font-body);
+    transition: all 0.2s ease;
 }
 
 html {
@@ -41,9 +40,68 @@ html {
 
 body {
     background: var(--white);
-    font-family: var(--font);
+    font-family: var(--font-body);
     overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
 }
+
+
+/* Text utilities */
+
+.xxl-font {
+    font-size: var(--font-xxl);
+    font-family: var(--font-title);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -5px;
+}
+
+.xl-font {
+    font-size: var(--font-xl);
+    font-family: var(--font-title);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -2px;
+}
+
+.l-font {
+    font-size: var(--font-lg);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+}
+
+.m-font {
+    font-size: var(--font-md);
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+}
+
+.s-font {
+    font-size: var(--font-sm);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.3px;
+}
+
+.xs-font {
+    font-size: var(--font-xs);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+}
+
+.gradient-text {
+    background: linear-gradient(30deg, var(--violet-accent) 20%, #484848 80%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* Scrollbar Styling */
 
 ::-webkit-scrollbar {
     width: 4px;
@@ -62,44 +120,111 @@ body {
     background-color: var(--violet-accent);
 }
 
-.xxl-font {
-    font-size: var(--xxl-font);
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -3px;
-}
-
-.xl-font {
-    font-size: var(--xl-font);
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -2px;
-}
-
-.x-font {
-    font-size: var(--x-font);
+button {
+    padding: 15px 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    font-size: var(--font-sm);
     font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -1px;
+    cursor: pointer;
+    transition: all 0.2s;
+    max-width: 300px;
+    width: fit-content;
 }
 
-.l-font {
-    font-size: var(--l-font);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -1px;
+button.border-black {
+    background: none;
+    border: 3px solid var(--black);
+    color: var(--black);
+    position: relative;
+    overflow: hidden;
 }
 
-.m-font {
-    font-size: var(--m-font);
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
+button.filled-black {
+    background: var(--black);
+    border: 3px solid var(--black);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
 }
 
-.s-font {
-    font-size: var(--s-font);
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.5px;
+button.filled-violet {
+    background: var(--violet-accent);
+    border: 3px solid var(--violet-accent);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+button.border-violet {
+    background: none;
+    border: 3px solid var(--violet-accent);
+    color: var(--violet-accent);
+    position: relative;
+}
+
+button:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+button.filled-black::before,
+button.filled-violet::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateY(-100%);
+}
+
+button.filled-black:hover::before,
+button.filled-violet:hover::before {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+button.border-black:hover {
+    background-color: rgba(108, 0, 250, 0.05);
+}
+
+button.filled-black:hover {
+    background: var(--black);
+    color: var(--white);
+    border: 3px solid var(--black);
+}
+
+button.filled-violet:hover {
+    background: var(--violet-accent);
+    color: var(--white);
+    border: 3px solid var(--violet-accent);
+}
+
+button.border-violet:hover {
+    background-color: rgba(108, 0, 250, 0.05);
+    color: var(--black);
+}
+
+
+/* Responsive adjustments for buttons */
+
+@media (max-width: 768px) {
+    button {
+        padding: 12px 30px;
+        font-size: var(--font-xs);
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        padding: 10px 20px;
+    }
 }

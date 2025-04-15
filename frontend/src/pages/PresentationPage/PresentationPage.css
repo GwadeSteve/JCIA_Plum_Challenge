@@ -1,1 +1,151 @@
+/* frontend/src/pages/PresentationPage/PresentationPage.css */
+
 @import url("../../index.css");
+.PresentationPage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 5%;
+    gap: 60px;
+}
+
+.PresentationPage .text-block {
+    width: 100%;
+    text-align: center;
+}
+
+.PresentationPage .text-block h1 {
+    margin-bottom: 10px;
+}
+
+.PresentationPage .text-block p {
+    font-size: var(--font-md);
+    color: var(--black-80);
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.PresentationPage .demo-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    aspect-ratio: 16/9;
+    box-shadow: 0 2px 50px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.PresentationPage .demo-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.PresentationPage .action-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 75px;
+}
+
+.PresentationPage .action-btns button {
+    width: 200px;
+}
+
+.features-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin-top: 60px;
+    padding: 0 1%;
+}
+
+.feature {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    width: 100%;
+    flex-wrap: wrap;
+    background: #efe3ff37;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+}
+
+.feature.reversed {
+    flex-direction: row-reverse;
+}
+
+.feature img {
+    width: 100%;
+    max-width: 600px;
+    max-height: 450px;
+    height: 450px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature div {
+    flex: 1;
+    min-width: 320px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.feature h2 {
+    font-size: var(--font-xl);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.feature p {
+    font-size: var(--font-md);
+    font-weight: 500;
+    color: var(--black-60);
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.animated-gradient-text {
+    font-size: var(--font-xxl);
+    font-family: var(--font-title);
+    font-weight: 800;
+    letter-spacing: -5px;
+    background: linear-gradient(90deg, #8a33fa, #131213, #6f2acb, #62379b);
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.feature-button {
+    align-self: flex-start;
+    max-width: 160px;
+}
