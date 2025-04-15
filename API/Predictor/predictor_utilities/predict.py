@@ -12,6 +12,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+torch.manual_seed(1242025)
+
 DEFAULT_MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "best_model.pt")
 DEFAULT_METADATA_PATH = os.path.join(os.path.dirname(__file__), "..", "meta_data.json")
 
