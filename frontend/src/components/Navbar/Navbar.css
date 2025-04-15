@@ -1,6 +1,6 @@
 @import '../../index.css';
 .navbar {
-    background-color: var(--white-80);
+    background-color: var(--white);
     padding: 30px 0;
     position: fixed;
     top: 0;
