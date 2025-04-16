@@ -1,258 +1,300 @@
 # PlumVision – JCIA Hackathon 2025
----
 
-## Table des Matières
+## Table of Contents
 - [PlumVision – JCIA Hackathon 2025](#plumvision--jcia-hackathon-2025)
-  - [Table des Matières](#table-des-matières)
-  - [C'est quoi PlumVision ?](#cest-quoi-plumvision-)
-  - [Objectif (Prototype)](#objectif-prototype)
-  - [Fonctionnalités Clés (Prototype)](#fonctionnalités-clés-prototype)
-  - [Stack Technique (Prototype)](#stack-technique-prototype)
-  - [Architecture du Système (Prototype)](#architecture-du-système-prototype)
-  - [Cas d’usage typique (Prototype – Démonstration)](#cas-dusage-typique-prototype--démonstration)
-  - [Backend – Fonctionnement (Prototype)](#backend--fonctionnement-prototype)
-  - [Frontend – Fonctionnalités (Prototype)](#frontend--fonctionnalités-prototype)
-  - [Plan de travail – 6 Periode pour avoir le Prototype](#plan-de-travail--6-periode-pour-avoir-le-prototype)
-    - [Periode 1 – Dataset \& Préparation](#periode-1--dataset--préparation)
-    - [Periode 2 – Sélection et Entraînement du Modèle](#periode-2--sélection-et-entraînement-du-modèle)
-    - [Periode 3 – Développement du Backend (API et Temps Réel avec Suivi)](#periode-3--développement-du-backend-api-et-temps-réel-avec-suivi)
-    - [Periode 4 – Développement du Frontend (Interface Utilisateur, Flux Caméra et Statistiques)](#periode-4--développement-du-frontend-interface-utilisateur-flux-caméra-et-statistiques)
-    - [Periode 5 – Intégration et Tests](#periode-5--intégration-et-tests)
-    - [Periode 6 – Préparation de la Démonstration et de la Présentation](#periode-6--préparation-de-la-démonstration-et-de-la-présentation)
-  - [Checklist finale (Prototype)](#checklist-finale-prototype)
-  - [Structure de la Base de Données (SQLite/ SQLAlchemy - Prototype)](#structure-de-la-base-de-données-sqlite-sqlalchemy---prototype)
-  - [Outils Backend](#outils-backend)
-  - [Structure Actuelle du Projet](#structure-actuelle-du-projet)
-  - [Équipe](#équipe)
+  - [Table of Contents](#table-of-contents)
+  - [What is PlumVision?](#what-is-plumvision)
+  - [Objective (Prototype)](#objective-prototype)
+  - [Key Features (Prototype)](#key-features-prototype)
+  - [Technical Stack (Prototype)](#technical-stack-prototype)
+  - [System Architecture (Prototype)](#system-architecture-prototype)
+    - [Key Components](#key-components)
+    - [Data Flow](#data-flow)
+  - [Typical Use Case (Prototype – Demonstration)](#typical-use-case-prototype--demonstration)
+  - [Backend – Functionality (Prototype)](#backend--functionality-prototype)
+  - [Frontend – Features (Prototype)](#frontend--features-prototype)
+  - [Work Plan – 6 Periods to Build the Prototype](#work-plan--6-periods-to-build-the-prototype)
+    - [Period 1 – Dataset \& Preparation](#period-1--dataset--preparation)
+    - [Period 2 – Model Selection and Training](#period-2--model-selection-and-training)
+    - [Period 3 – Backend Development (API and Real-Time Tracking)](#period-3--backend-development-api-and-real-time-tracking)
+    - [Period 4 – Frontend Development (User Interface, Camera Feed, and Statistics)](#period-4--frontend-development-user-interface-camera-feed-and-statistics)
+    - [Period 5 – Integration and Testing](#period-5--integration-and-testing)
+    - [Period 6 – Demo and Presentation Preparation](#period-6--demo-and-presentation-preparation)
+  - [Final Checklist (Prototype)](#final-checklist-prototype)
+  - [Database Structure (SQLite/SQLAlchemy - Prototype)](#database-structure-sqlitesqlalchemy---prototype)
+  - [Backend Tools](#backend-tools)
+  - [Current Project Structure](#current-project-structure)
+  - [Team](#team)
 
 ---
 
-## C'est quoi PlumVision ?
+## What is PlumVision?
 
-**PlumVision** est une solution intelligente conçue pour automatiser le tri de prunes africaines. Ce prototype vise à démontrer la faisabilité d'une classification en temps réel des prunes à l'aide de modèles de machine learning et d'une interface utilisateur interactive.
-
----
-
-## Objectif (Prototype)
-
-Développer un prototype capable de classifier en temps réel des prunes africaines via une caméra connectée dans l'une des **6 catégories principales** : bonne qualité, non mûre, tachetée, fissurée, meurtrie, pourrie. L'objectif principal est de démontrer la fonctionnalité de classification en temps réel, le suivi des statistiques de session et de fournir une interface utilisateur basique pour l'interaction et la visualisation des résultats.
+**PlumVision** is an intelligent solution designed to automate the sorting of African plums. This prototype aims to demonstrate the feasibility of real-time plum classification using machine learning models and an interactive user interface.
 
 ---
 
-## Fonctionnalités Clés (Prototype)
+## Objective (Prototype)
 
-* **Classification en Temps Réel :** Analyse du flux vidéo d'une caméra connectée pour classifier les prunes.
-* **Upload d'Image :** Possibilité d'uploader une image de prune pour obtenir une prédiction unique.
-* **Statistiques de Session :** Suivi en temps réel du nombre total de prunes traitées et de la répartition par catégorie durant une session de scan.
-* **Interface Utilisateur Interactive :** Interface web simple pour démarrer/arrêter les sessions, visualiser le flux de la caméra, les prédictions et les statistiques.
-* **Commentaires IA :** Génération automatique de commentaires sur la qualité globale du tri via l'API Gemini.
+Develop a prototype capable of classifying African plums in real-time via a connected camera into one of **6 main categories**: good quality, unripe, spotted, cracked, bruised, rotten. The main objective is to demonstrate real-time classification functionality, session statistics tracking, and provide a basic user interface for interaction and visualization of results.
 
 ---
 
-## Stack Technique (Prototype)
+## Key Features (Prototype)
 
-| Composant         | Outils / Langages                                                              |
-|-------------------|------------------------------------------------------------------------------|
-| **Modèles ML** | PyTorch, YOLOv8-cls, EfficientNetB0, RexNet, MobileNetV3, ...                |
-| **Backend API** | **FastAPI** (pour sa rapidité et ses fonctionnalités) + Uvicorn (serveur ASGI) |
-| **Frontend** | **React** + Axios + Chart.js                                                 |
-| **Temps Réel** | **WebSockets** (communication bidirectionnelle et un flux continu de données) |
-| **IA Générative** | Gemini API                                                                   |
-| **Entraînement** | Jupyter Notebooks + PyTorch + Scripts Python                                 |
-| **Stockage/DB** | SQLite/ SQLAlchemy (Prototype)                                                           |
-| **Dataset** | African Plums Dataset (Kaggle)                                               |
+* **Real-Time Classification:** Analysis of video feed from a connected camera to classify plums.
+* **Image Upload:** Ability to upload a plum image for a single prediction.
+* **Session Statistics:** Real-time tracking of the total number of plums processed and their distribution by category during a scanning session.
+* **Interactive User Interface:** Simple web interface to start/stop sessions, visualize the camera feed, predictions, and statistics.
+* **AI Comments:** Automatic generation of comments on overall sorting quality.
 
 ---
 
-## Architecture du Système (Prototype)
+## Technical Stack (Prototype)
 
-<img src="./Image.png" width="auto" alt="Architecture du Système"/>
-
-Le système comprend un frontend **React** pour l'interface utilisateur, un backend **FastAPI** pour l'API et la logique de classification, une communication en temps réel via **WebSockets** pour le flux de la caméra et les statistiques, et l'intégration de l'**API Gemini** pour les commentaires.
+| Component | Tools / Languages |
+|-----------|-------------------|
+| **ML Models** | PyTorch, YOLOv8-cls, EfficientNetB0, RexNet, MobileNetV3, ... |
+| **Backend API** | **FastAPI** (for speed and features) + Uvicorn (ASGI server) |
+| **Frontend** | **React** + Axios + Chart.js |
+| **Real-Time** | **WebSockets** (bidirectional communication and continuous data flow) |
+| **Training** | Jupyter Notebooks + PyTorch + Python Scripts |
+| **Storage/DB** | SQLite/SQLAlchemy (Prototype) |
+| **Dataset** | African Plums Dataset (Kaggle) |
 
 ---
 
-## Cas d’usage typique (Prototype – Démonstration)
+## System Architecture (Prototype)
 
-> **Démonstration du prototype :**
+```
+┌─────────────────┐                ┌────────────────────────────┐
+│                 │                │                            │
+│   React         │◄────REST API───┤   FastAPI Backend          │
+│   Frontend      │                │   - Image classification   │
+│                 │                │   - Session management     │
+│   - UI          │◄───────────────┤   - Statistics tracking    │
+│   - Camera feed │     WebSockets │                            │
+│   - Dashboards  │───────────────►│   - Database (SQLite)      │
+│   - Statistics  │                │                            │
+│                 │                │                            │
+└─────────────────┘                └─────────────┬──────────────┘
+                                                 │
+                                                 │
+                                                 ▼
+                                    ┌────────────────────────────┐
+                                    │                            │
+                                    │  PyTorch Models            │
+                                    │  - PlumVision Classifier   │
+                                    │  - MobileNetV3/ReXNet/YOLO │
+                                    │                            │
+                                    └────────────────────────────┘
+```
+
+The system comprises a **React** frontend for the user interface, a **FastAPI** backend for the API and classification logic, and real-time communication via **WebSockets** for the camera feed and statistics tracking. The bidirectional WebSocket connection allows for continuous data flow between the frontend and backend components.
+
+### Key Components
+
+**Frontend (React)**
+- User interface for interaction
+- Camera feed capture and display
+- Real-time statistics visualization
+- Session management controls
+
+**Backend (FastAPI)**
+- REST API endpoints for prediction requests
+- WebSocket server for real-time video processing
+- Session statistics tracking and storage
+- Database integration with SQLite
+
+**Machine Learning**
+- PyTorch-based image classification models
+- Trained on African plums dataset
+- Multiple model architectures to implement (MobileNetV3, ReXNet, YOLO)
+
+### Data Flow
+1. User starts a scanning session via the frontend
+2. Camera feed is captured and frames are sent to backend via WebSockets
+3. Backend processes images with PyTorch models
+4. Classification results and updated statistics are sent back to frontend
+5. Frontend displays results in real-time dashboards
+6. Session data is stored in SQLite database for later retrieval
+
+---
+
+## Typical Use Case (Prototype – Demonstration)
+
+> **Prototype demonstration:**
 >
-> 1.  L'utilisateur lance l'application web.
-> 2.  Dans la section de prédiction, l'utilisateur **démarre une session de scan en temps réel**, permettant d'accéder à la caméra connectée.
-> 3.  Le frontend **capture des images** du flux vidéo à une fréquence déterminée et les envoie au backend via WebSockets.
-> 4.  Le backend **classifie** chaque prune (via le modèle sélectionné) et **met à jour les statistiques de la session** (nombre total d'images traitées, nombre de prunes prédites par catégorie).
-> 5.  Le backend **renvoie ces statistiques** au frontend en temps réel.
-> 6.  L'interface affiche en direct :
->     * Le flux de la caméra.
->     * La catégorie prédite pour chaque prune détectée (potentiellement superposée).
->     * Une **section dédiée affichant les statistiques de la session en cours** (nombre total de prunes, répartition par catégorie).
->     * Un **commentaire généré par Gemini** sur la qualité globale (basé sur les classifications en temps réel).
-> 7.  L'utilisateur a la possibilité d'**arrêter la session de scan** à tout moment.
+> 1. The user launches the web application.
+> 2. In the prediction section, the user **starts a real-time scanning session**, allowing access to the connected camera.
+> 3. The frontend **captures images** from the video feed at a determined frequency and sends them to the backend via WebSockets.
+> 4. The backend **classifies** each plum (via the selected model) and **updates the session statistics** (total number of images processed, number of plums predicted per category).
+> 5. The backend **sends these statistics** to the frontend in real-time.
+> 6. The interface displays in real-time:
+>    * The camera feed.
+>    * The predicted category for each detected plum (potentially overlaid).
+>    * A **dedicated section displaying current session statistics** (total number of plums, distribution by category).
+> 7. The user has the option to **stop the scanning session** at any time.
 
 ---
 
-## Backend – Fonctionnement (Prototype)
+## Backend – Functionality (Prototype)
 
-* **/predict** : reçoit une image (upload), retourne la prédiction.
-* **/stream** : gère le flux vidéo de la caméra via **WebSockets**.
-    * Reçoit les images capturées par le frontend.
-    * Effectue la prédiction sur chaque image.
-    * **Maintient des compteurs en mémoire pour la session en cours :**
-        * Nombre total d'images traitées.
-        * Nombre de prédictions par catégorie.
-    * **Retourne au frontend :**
-        * La prédiction pour l'image courante (potentiellement).
-        * Les statistiques de la session mises à jour.
-* **/metrics** : retourne les statistiques de la session actuelle (nombre total, répartition).
-* **Gemini Integration** : génère un commentaire simple basé sur les statistiques de classification en temps réel.
-* **Session Management** : gère l'état de la session (active/inactive) et stocke les données de session en mémoire ou dans un fichier SQLite/ SQLAlchemy temporaire.
-
----
-
-## Frontend – Fonctionnalités (Prototype)
-
-* **Section Présentation :** Description concise du projet PlumVision et les noms des membres de l'équipe.
-* **Section Prédiction :**
-    * Possibilité d'**uploader une image** pour obtenir une prédiction instantanée.
-    * **Session de scan en temps réel :**
-        * Bouton pour **démarrer** et **arrêter** la session.
-        * Accès à la caméra de l'utilisateur (via l'API du navigateur).
-        * Affichage du flux vidéo dans un élément `<video>`.
-        * **Capture d'images du flux vidéo à une fréquence déterminée.**
-        * Envoi des images capturées au backend via WebSockets.
-        * Affichage en direct du flux de la caméra et des prédictions superposées ou affichées à côté.
-        * **Affichage en temps réel des statistiques de la session :**
-            * Nombre total de prunes traitées.
-            * Répartition par catégorie (sous forme de texte ou d'un graphique simple).
-* **Section Dashboard :**
-    * Affichage du **nombre total de prunes traitées** durant la session (après son arrêt).
-    * Un **graphique simple (Chart.js)** montrant la répartition des prunes par catégorie pour la session en cours (après son arrêt).
+* **/predict**: receives an image (upload), returns the prediction.
+* **/stream**: manages the camera video feed via **WebSockets**.
+    * Receives images captured by the frontend.
+    * Makes a prediction on each image.
+    * **Maintains counters in memory for the current session:**
+        * Total number of images processed.
+        * Number of predictions per category.
+    * **Returns to the frontend:**
+        * The prediction for the current image (potentially).
+        * Updated session statistics.
+* **/metrics**: returns the current session statistics (total count, distribution).
+* **Session Management**: manages the session state (active/inactive) and stores session data in memory or in a temporary SQLite/SQLAlchemy file.
 
 ---
 
-## Plan de travail – 6 Periode pour avoir le Prototype
+## Frontend – Features (Prototype)
 
-### Periode 1 – Dataset & Préparation
-* Sélection et organisation d'un sous-ensemble représentatif du dataset pour le prototype.
-* Vérification et préparation des données pour l'entraînement et les tests rapides.
-* Configuration de l'environnement de développement et du contrôle de version (GitHub).
-
-### Periode 2 – Sélection et Entraînement du Modèle
-* Choix d'un modèle principal (**YOLOv8-cls** ou **EfficientNetB0**) pour le prototype, basé sur les premiers tests de précision et de rapidité.
-* Adaptation du dataset au format requis par le modèle choisi.
-* Entraînement rapide du modèle sur le sous-ensemble de données.
-* Sauvegarde du modèle entraîné.
-
-### Periode 3 – Développement du Backend (API et Temps Réel avec Suivi)
-* Mise en place d'une API avec **FastAPI**.
-* Création d'un endpoint **/predict** pour recevoir une image et retourner la prédiction du modèle.
-* Implémentation de la gestion des données de session (en mémoire ou via **SQLite/ SQLAlchemy**), incluant le suivi du nombre total d'images traitées et des prédictions par catégorie.
-* Création d'un endpoint **/metrics** pour retourner les statistiques de la session.
-* **Implémentation de la gestion des WebSockets pour le flux de caméra en temps réel**, incluant la réception des images, la prédiction, la mise à jour des statistiques de session et l'envoi de ces statistiques au frontend.
-* Intégration basique de l'**API Gemini** pour générer un commentaire sur les résultats en temps réel (basé sur les statistiques).
-
-### Periode 4 – Développement du Frontend (Interface Utilisateur, Flux Caméra et Statistiques)
-* Création de la structure de base de l'application **React** avec les trois sections (Présentation, Prédiction, Dashboard).
-* Implémentation de la fonctionnalité d'upload d'image dans la section Prédiction.
-* **Implémentation de la gestion de la session de scan en temps réel dans la section Prédiction :**
-    * Boutons de démarrage et d'arrêt de la session.
-    * Accès à la caméra de l'utilisateur.
-    * Affichage du flux vidéo.
-    * **Capture d'images à une fréquence déterminée (par exemple, toutes les 0.5 secondes).**
-    * **Établissement et gestion de la connexion WebSocket avec le backend.**
-    * **Envoi des images capturées au backend via WebSockets.**
-    * **Affichage en temps réel des statistiques de la session reçues du backend.**
-
-### Periode 5 – Intégration et Tests
-* Intégration complète du frontend avec le backend, y compris le flux de caméra en temps réel et la mise à jour des statistiques via WebSockets.
-* Tests fonctionnels approfondis de l'ensemble du prototype (upload, prédiction, scan en temps réel, affichage des statistiques, commentaire Gemini, démarrage/arrêt de session).
-* Optimisation du flux en temps réel pour une latence minimale et une gestion efficace des ressources.
-* Correction des bugs et améliorations de l'interface utilisateur.
-
-### Periode 6 – Préparation de la Démonstration et de la Présentation
-* Préparation d'une courte vidéo de démonstration du prototype (≤ 2 min) mettant en évidence le fonctionnement en temps réel et l'affichage des statistiques.
-* Création d'une présentation concise mettant en évidence les fonctionnalités et les résultats du prototype.
-* Finalisation du dépôt GitHub pour la soumission.
+* **Presentation Section:** Concise description of the PlumVision project and team member names.
+* **Prediction Section:**
+    * Ability to **upload an image** for instant prediction.
+    * **Real-time scanning session:**
+        * Button to **start** and **stop** the session.
+        * Access to the user's camera (via browser API).
+        * Display of the video feed in a `<video>` element.
+        * **Capture of images from the video feed at a determined frequency.**
+        * Sending captured images to the backend via WebSockets.
+        * Real-time display of the camera feed and predictions overlaid or displayed alongside.
+        * **Real-time display of session statistics:**
+            * Total number of plums processed.
+            * Distribution by category (as text or a simple graph).
+* **Dashboard Section:**
+    * Display of **total number of plums processed** during the session (after it's stopped).
+    * A **simple chart (Chart.js)** showing the distribution of plums by category for the current session (after it's stopped).
 
 ---
 
-## Checklist finale (Prototype)
+## Work Plan – 6 Periods to Build the Prototype
 
-| Élément                                                              | Statut |
-|----------------------------------------------------------------------|--------|
-| Dataset sélectionné et préparé                                     | **Done** |
-| Modèle principal entraîné et sauvegardé                           | **Done** |
-| API FastAPI fonctionnelle avec prédiction                           | ⬜     |
-| Gestion des données de session avec suivi des statistiques         | ⬜     |
-| Endpoint /metrics fonctionnel                                      | ⬜     |
-| Intégration simple de Gemini                                        | ⬜     |
-| Section Présentation du frontend                                   | ⬜     |
-| Fonctionnalité d'upload d'image                                     | ⬜     |
-| **Accès à la caméra, capture d'images et flux en temps réel fonctionnel** | ⬜     |
-| Communication Frontend-Backend via WebSockets pour le flux et les stats | ⬜     |
-| **Affichage en temps réel des statistiques de session sur le frontend** | ⬜     |
-| Fonctionnalité de démarrage et d'arrêt de session                   | ⬜     |
-| Section Dashboard avec statistiques (après arrêt session)          | ⬜     |
-| Démo vidéo préparée                                                | ⬜     |
-| Présentation préparée                                              | ⬜     |
-| Dépôt GitHub prêt pour la soumission                               | ⬜     |
+### Period 1 – Dataset & Preparation
+* Selection and organization of a representative subset of the dataset for the prototype.
+* Verification and preparation of data for training and quick tests.
+* Setup of the development environment and version control (GitHub).
+
+### Period 2 – Model Selection and Training
+* Choice of a main model (**YOLOv8-cls** or **EfficientNetB0**) for the prototype, based on initial accuracy and speed tests.
+* Adaptation of the dataset to the format required by the chosen model.
+* Quick training of the model on the data subset.
+* Saving of the trained model.
+
+### Period 3 – Backend Development (API and Real-Time Tracking)
+* Setting up an API with **FastAPI**.
+* Creation of a **/predict** endpoint to receive an image and return the model's prediction.
+* Implementation of session data management (in memory or via **SQLite/SQLAlchemy**), including tracking of the total number of images processed and predictions by category.
+* Creation of a **/metrics** endpoint to return session statistics.
+* **Implementation of WebSockets management for real-time camera feed**, including receiving images, prediction, updating session statistics, and sending these statistics to the frontend.
+
+### Period 4 – Frontend Development (User Interface, Camera Feed, and Statistics)
+* Creation of the basic structure of the **React** application with three sections (Presentation, Prediction, Dashboard).
+* Implementation of the image upload functionality in the Prediction section.
+* **Implementation of real-time scanning session management in the Prediction section:**
+    * Start and stop session buttons.
+    * Access to the user's camera.
+    * Display of the video feed.
+    * **Capture of images at a determined frequency (for example, every 0.5 seconds).**
+    * **Establishment and management of WebSocket connection with the backend.**
+    * **Sending captured images to the backend via WebSockets.**
+    * **Real-time display of session statistics received from the backend.**
+
+### Period 5 – Integration and Testing
+* Complete integration of the frontend with the backend, including real-time camera feed and statistics updates via WebSockets.
+* Thorough functional testing of the entire prototype (upload, prediction, real-time scanning, statistics display, session start/stop).
+* Optimization of the real-time flow for minimal latency and efficient resource management.
+* Bug fixes and user interface improvements.
+
+### Period 6 – Demo and Presentation Preparation
+* Preparation of a short demo video of the prototype (≤ 2 min) highlighting real-time operation and statistics display.
+* Creation of a concise presentation highlighting the prototype's features and results.
+* Finalization of the GitHub repository for submission.
 
 ---
 
-## Structure de la Base de Données (SQLite/ SQLAlchemy - Prototype)
+## Final Checklist (Prototype)
 
-Pour le prototype, une structure simple avec une seule table ou deux maxi pour stocker les informations de session.
+| Item | Status |
+|------|--------|
+| Dataset selected and prepared | **Done** |
+| Main model trained and saved | **Done** |
+| Functional FastAPI API with prediction | **Done** |
+| Session data management with statistics tracking | **Done** |
+| Functional /metrics endpoint | **Done** |
+| Frontend Presentation section | **Done** |
+| Image upload functionality | **Done** |
+| **Camera access, image capture, and functional real-time feed** | **Done** |
+| Frontend-Backend communication via WebSockets for feed and stats | **Done** |
+| **Real-time display of session statistics on the frontend** | **Done** |
+| Session start and stop functionality | **Done** |
+| Dashboard section with statistics (after session stop) | **Done** |
+| Demo video prepared | ⬜ |
+| Presentation prepared | ⬜ |
+| GitHub repository ready for submission | ⬜ |
+
+---
+
+## Database Structure (SQLite/SQLAlchemy - Prototype)
+
+For the prototype, a simple structure with just one or two tables to store session information.
 
 **Table: `sessions`**
 
-| Colonne           | Type     | Description                                                    |
-|-------------------|----------|----------------------------------------------------------------|
-| `session_id`      | INTEGER  | Clé primaire, identifiant unique de la session               |
-| `start_time`      | DATETIME | Timestamp du début de la session                             |
-| `end_time`        | DATETIME | Timestamp de la fin de la session                             |
-| `total_plums`     | INTEGER  | Nombre total de prunes traitées                                |
-| `category_counts` | TEXT     | JSON string représentant le compte par catégorie              |
-| `gemini_summary`  | TEXT     | Résumé généré par l'API Gemini                                 |
+| Column | Type | Description |
+|--------|------|-------------|
+| `session_id` | INTEGER | Primary key, unique session identifier |
+| `start_time` | DATETIME | Session start timestamp |
+| `end_time` | DATETIME | Session end timestamp |
+| `total_plums` | INTEGER | Total number of plums processed |
+| `category_counts` | TEXT | JSON string representing the count by category |
 
-**Table: `predictions` (Pour un historique plus détaillé)**
+**Table: `predictions` (For more detailed history)**
 
-| Colonne           | Type     | Description                                                       |
-|-------------------|----------|-------------------------------------------------------------------|
-| `prediction_id`   | INTEGER  | Clé primaire, identifiant unique de la prédiction                |
-| `session_id`      | INTEGER  | Clé étrangère référençant la table `sessions`                    |
-| `image_name`      | TEXT     | Nom du fichier image                                              |
-| `predicted_class` | TEXT     | Catégorie prédite pour la prune                                 |
-| `prediction_time` | DATETIME | Timestamp de la prédiction                                      |
+| Column | Type | Description |
+|--------|------|-------------|
+| `prediction_id` | INTEGER | Primary key, unique prediction identifier |
+| `session_id` | INTEGER | Foreign key referencing the `sessions` table |
+| `image_name` | TEXT | Image filename |
+| `predicted_class` | TEXT | Predicted category for the plum |
+| `prediction_time` | DATETIME | Prediction timestamp |
 
-Pour le prototype, on pourrait commencer par stocker les données de session dans un dictionnaire en mémoire et envisager **SQLite/ SQLAlchemy** si on souhaite une persistance basique entre les exécutions de l'API.
-
----
-
-## Outils Backend
-
-Pour atteindre nos objectifs, je propose **FastAPI** comme framework backend principal. Sa nature asynchrone et sa bonne intégration avec les **WebSockets** en font un choix judicieux pour gérer le flux de données en temps réel et les mises à jour des statistiques.
-
-Pour la gestion des WebSockets dans FastAPI, on peut utiliser les fonctionnalités intégrées basées sur **Starlette**. On devra définir un endpoint WebSocket qui gérera la connexion, la réception des images, l'exécution des prédictions, la mise à jour des compteurs de session et l'envoi des statistiques au frontend.
-
-En complément :
-
-* **Uvicorn:** Sera notre serveur ASGI pour faire fonctionner l'application FastAPI, pour de bonnes performances pour les applications asynchrones et WebSocket.
-* **PyTorch:** Pour charger et exécuter notre modèle de deep learning pour la prédiction.
-* **SQLite/ SQLAlchemy:** Pour le stockage basique des données de session.
-* **Google AI Gemini API:** Pour générer les commentaires textuels basés sur les résultats du tri.
-
-Pour le frontend :
-
-* **React:** Une librairie JavaScript robuste pour construire des interfaces utilisateur dynamiques et réactives, pour gérer le flux de la caméra, la communication WebSocket et l'affichage des statistiques en temps réel.
-* **TailwindCSS:** pour styliser rapidement l'interface utilisateur.
-* **Axios:** pour effectuer des requêtes vers l'API backend (pour l'upload d'image et potentiellement pour récupérer les statistiques de session après l'arrêt).
-* **Chart.js:** pour la création de graphiques simple et efficace pour visualiser la répartition des catégories de prunes.
+For the prototype, we could start by storing session data in an in-memory dictionary and consider **SQLite/SQLAlchemy** if we want basic persistence between API executions.
 
 ---
 
-## Structure Actuelle du Projet
+## Backend Tools
+
+To achieve our objectives, I propose **FastAPI** as the main backend framework. Its asynchronous nature and good integration with **WebSockets** make it a judicious choice for managing real-time data flow and statistics updates.
+
+For WebSockets management in FastAPI, we can use the built-in features based on **Starlette**. We'll need to define a WebSocket endpoint that will handle the connection, image reception, prediction execution, session counter updates, and sending statistics to the frontend.
+
+Additionally:
+
+* **Uvicorn:** Will be our ASGI server to run the FastAPI application, for good performance for asynchronous and WebSocket applications.
+* **PyTorch:** For loading and executing our deep learning model for prediction.
+* **SQLite/SQLAlchemy:** For basic session data storage.
+
+For the frontend:
+
+* **React:** A robust JavaScript library for building dynamic and reactive user interfaces, to manage the camera feed, WebSocket communication, and real-time statistics display.
+* **TailwindCSS:** For quickly styling the user interface.
+* **Axios:** For making requests to the backend API (for image upload and potentially for retrieving session statistics after stopping).
+* **Chart.js:** For simple and efficient chart creation to visualize the distribution of plum categories.
+
+---
+
+## Current Project Structure
 
 ```bash
-
 ├── JCIA_PLUM_DATA_CHALLENGE/
 │   ├── .gitattributes
 │   ├── .gitignore
@@ -414,6 +456,6 @@ Pour le frontend :
 
 ---
 
-## Équipe
+## Team
 
 *PlumVision*

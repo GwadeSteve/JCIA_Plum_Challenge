@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import "./PropositionTeamPage.css";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
@@ -24,6 +25,22 @@ import haroldImage from "../../assets/team/Harold Njimeyup.jpg";
 import mureilleImage from "../../assets/team/Murielle Sharane.jpg";
 import samyImage from "../../assets/team/Mintyene.jpg";
 import farmerImage from "../../assets/team/Farmer.png";
+=======
+import React from 'react';
+import './PropositionTeamPage.css';
+import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { HiOutlineCode, HiOutlineDatabase, HiOutlineChartBar, 
+         HiOutlineDesktopComputer, HiOutlineLightBulb, HiOutlineStar,
+         HiOutlineAcademicCap, HiOutlineGlobe } from 'react-icons/hi';
+import { BsGraphUp, BsShieldCheck, BsLightningCharge } from 'react-icons/bs';
+import { MdOutlineSignalWifiOff, MdOutlinePhoneAndroid, MdOutlineAccessTime } from 'react-icons/md';
+import gwadeImage from "../../assets/team/Gwade Steve 2.jpg"
+import avodaImage from "../../assets/team/Valery.jpg"
+import haroldImage from "../../assets/team/Harold Njimeyup.jpg"
+import mureilleImage from "../../assets/team/Murielle Sharane.jpg"
+import samyImage from "../../assets/team/Mintyene.jpg"
+import farmerImage from "../../assets/team/Farmer.png"
+>>>>>>> 127f3fa1495945c0ea1f7f47a9cd058c1a18ea03
 
 const PropositionTeamPage = () => {
   const teamMembers = [
@@ -60,8 +77,13 @@ const PropositionTeamPage = () => {
     },
     {
       name: "Njimeyup Mbouombouo Harold Francois",
+<<<<<<< HEAD
       roles: ["Research", "Deep Learning", "Frontend Developer", "UI/UX"],
       bio: "Passionate about tomorrow’s technologies, I build innovative solutions that combine artificial intelligence, computer vision, and intelligent systems, with a strong focus on functional and thoughtful design. I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful, human-centered projects that place the user at the heart of innovation.",
+=======
+      roles: ["Research", "Deep Learning", 'Frontend Developer',"UI/UX"],
+      bio: "Passionate about tomorrow’s technologies, I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful, human-centered projects that place the user at the heart of innovation.",
+>>>>>>> 127f3fa1495945c0ea1f7f47a9cd058c1a18ea03
       image: haroldImage,
       socials: {
         github: "https://github.com/HaroldNjimeyup",
@@ -77,7 +99,7 @@ const PropositionTeamPage = () => {
     {
       name: "Magne Mureille Sharane",
       roles: ["Data Scientist", "Database"],
-      bio: "My grandmother was a plum farmer in the West Region - I grew up watching her test plums by hand. Now at ENSPD, I'm building systems that honor that traditional knowledge while making it more precise. I'm obsessed with creating tech that works even when the internet doesn't.",
+      bio: "My name is Mureille Sharane Magne, a Master's student in Data Science and Artificial Intelligence at ENSPD. I define myself as a curious and hardworking woman, passionate about what I do and not afraid to take on new challenges.",
       image: mureilleImage,
       socials: {
         github: "https://github.com/fatoundiaye",
@@ -91,7 +113,7 @@ const PropositionTeamPage = () => {
     {
       name: "Mintyene Samy Junior",
       roles: ["Computer Vision", "Backend Developer"],
-      bio: "I've spent more weekends than I can count in local markets collecting plum data. My friends laugh when I explain the subtle differences between 12 varieties of safou, but this passion drives our AI's accuracy. At ENSPD, I'm the team's walking encyclopedia of African plum varieties.",
+      bio: "My friends laugh when I explain the subtle differences between 12 varieties of safou, but this passion drives my accuracy. At ENSPD, I'm the team's walking encyclopedia of African plum varieties.",
       image: samyImage,
       socials: {
         github: "https://github.com/kofiosei",
@@ -106,7 +128,7 @@ const PropositionTeamPage = () => {
 
   const missionStatement = {
     title: "Our Mission",
-    text: "We're not just building an app - we're preserving generations of farming wisdom. As ENSPD students who've seen firsthand how post-harvest losses affect our communities, we're creating a bridge between traditional knowledge and cutting-edge AI. Our solution isn't imported from elsewhere; it's built for Cameroon's unique challenges, by Cameroonians who understand the problem from the inside.",
+    text: "As ENSPD students who've seen firsthand how post-harvest losses affect our communities, we're creating a bridge between traditional knowledge and cutting-edge AI. Our solution isn't imported from elsewhere; it's built for Cameroon's unique challenges, by Cameroonians who understand the problem from the inside.",
     goals: [
       "Cut post-harvest losses nearly in half for smallholder farmers who can't afford complex equipment",
       "Create technology that works in the real world - spotty internet, dusty conditions, and all",
