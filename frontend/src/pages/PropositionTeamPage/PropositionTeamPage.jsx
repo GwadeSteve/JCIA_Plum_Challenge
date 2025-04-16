@@ -1,31 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
-import "./PropositionTeamPage.css";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import {
-  HiOutlineCode,
-  HiOutlineDatabase,
-  HiOutlineChartBar,
-  HiOutlineDesktopComputer,
-  HiOutlineLightBulb,
-  HiOutlineStar,
-  HiOutlineAcademicCap,
-  HiOutlineGlobe,
-  HiOutlinePencil,
-} from "react-icons/hi";
-import { BsGraphUp, BsShieldCheck, BsLightningCharge } from "react-icons/bs";
-import {
-  MdOutlineSignalWifiOff,
-  MdOutlinePhoneAndroid,
-  MdOutlineAccessTime,
-} from "react-icons/md";
-import gwadeImage from "../../assets/team/Gwade Steve.jpg";
-import avodaImage from "../../assets/team/Valery.jpg";
-import haroldImage from "../../assets/team/Harold Njimeyup.jpg";
-import mureilleImage from "../../assets/team/Murielle Sharane.jpg";
-import samyImage from "../../assets/team/Mintyene.jpg";
-import farmerImage from "../../assets/team/Farmer.png";
-=======
+
 import React from 'react';
 import './PropositionTeamPage.css';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
@@ -40,7 +13,7 @@ import haroldImage from "../../assets/team/Harold Njimeyup.jpg"
 import mureilleImage from "../../assets/team/Murielle Sharane.jpg"
 import samyImage from "../../assets/team/Mintyene.jpg"
 import farmerImage from "../../assets/team/Farmer.png"
->>>>>>> 127f3fa1495945c0ea1f7f47a9cd058c1a18ea03
+
 
 const PropositionTeamPage = () => {
   const teamMembers = [
@@ -77,13 +50,9 @@ const PropositionTeamPage = () => {
     },
     {
       name: "Njimeyup Mbouombouo Harold Francois",
-<<<<<<< HEAD
-      roles: ["Research", "Deep Learning", "Frontend Developer", "UI/UX"],
-      bio: "Passionate about tomorrow’s technologies, I build innovative solutions that combine artificial intelligence, computer vision, and intelligent systems, with a strong focus on functional and thoughtful design. I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful, human-centered projects that place the user at the heart of innovation.",
-=======
+
       roles: ["Research", "Deep Learning", 'Frontend Developer',"UI/UX"],
       bio: "Passionate about tomorrow’s technologies, I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful, human-centered projects that place the user at the heart of innovation.",
->>>>>>> 127f3fa1495945c0ea1f7f47a9cd058c1a18ea03
       image: haroldImage,
       socials: {
         github: "https://github.com/HaroldNjimeyup",
