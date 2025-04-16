@@ -42,7 +42,6 @@ wandb/
 # Images
 *.webp
 *.bmp
-*.gif
 
 API/**/*.png
 API/**/*.jpg
