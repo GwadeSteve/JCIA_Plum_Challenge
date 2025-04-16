@@ -1,6 +1,7 @@
 import React from 'react';
 import './PresentationPage.css';
 import { useNavigate } from 'react-router-dom';
+import demofull from '../../assets/demo/full_demo.gif';
 
 const CustomButton = ({ children, variant, link }) => {
     const navigate = useNavigate();
@@ -54,7 +55,7 @@ const PresentationPage = () => {
             </div>
 
             <div className='demo-video' data-aos="fade-in">
-                <img src="/demo.gif" alt="PlumVision Demo" />
+                <img src={demofull} alt="PlumVision Demo" />
             </div>
 
             <div className="action-btns">
