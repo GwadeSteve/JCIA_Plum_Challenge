@@ -3,10 +3,10 @@ import './PropositionTeamPage.css';
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { HiOutlineCode, HiOutlineDatabase, HiOutlineChartBar, 
          HiOutlineDesktopComputer, HiOutlineLightBulb, HiOutlineStar,
-         HiOutlineAcademicCap, HiOutlineGlobe, HiOutlinePencil } from 'react-icons/hi';
+         HiOutlineAcademicCap, HiOutlineGlobe } from 'react-icons/hi';
 import { BsGraphUp, BsShieldCheck, BsLightningCharge } from 'react-icons/bs';
 import { MdOutlineSignalWifiOff, MdOutlinePhoneAndroid, MdOutlineAccessTime } from 'react-icons/md';
-import gwadeImage from "../../assets/team/Gwade Steve.jpg"
+import gwadeImage from "../../assets/team/Gwade Steve 2.jpg"
 import avodaImage from "../../assets/team/Valery.jpg"
 import haroldImage from "../../assets/team/Harold Njimeyup.jpg"
 import mureilleImage from "../../assets/team/Murielle Sharane.jpg"
@@ -76,7 +76,7 @@ const PropositionTeamPage = () => {
 
   const missionStatement = {
     title: "Our Mission",
-    text: "We're not just building an app - we're preserving generations of farming wisdom. As ENSPD students who've seen firsthand how post-harvest losses affect our communities, we're creating a bridge between traditional knowledge and cutting-edge AI. Our solution isn't imported from elsewhere; it's built for Cameroon's unique challenges, by Cameroonians who understand the problem from the inside.",
+    text: "As ENSPD students who've seen firsthand how post-harvest losses affect our communities, we're creating a bridge between traditional knowledge and cutting-edge AI. Our solution isn't imported from elsewhere; it's built for Cameroon's unique challenges, by Cameroonians who understand the problem from the inside.",
     goals: [
       "Cut post-harvest losses nearly in half for smallholder farmers who can't afford complex equipment",
       "Create technology that works in the real world - spotty internet, dusty conditions, and all",
