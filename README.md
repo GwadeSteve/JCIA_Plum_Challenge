@@ -53,7 +53,7 @@
 - **Backend :** FastAPI
 - **Frontend :** ReactJS
 - **IA Générative :** Gemini API
-- **Base de Données (Prototype) :** SQLites
+- **Base de Données (Prototype) :** SQLite
 
 ---
 
