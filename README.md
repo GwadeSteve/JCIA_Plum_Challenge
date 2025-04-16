@@ -52,7 +52,6 @@
 - **Modèles de Deep Learning :** PyTorch
 - **Backend :** FastAPI
 - **Frontend :** ReactJS
-- **IA Générative :** Gemini API
 - **Base de Données (Prototype) :** SQLites
 
 ---
