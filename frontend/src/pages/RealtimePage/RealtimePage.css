@@ -239,6 +239,8 @@
     flex-direction: column;
     gap: 12px;
     padding-right: 5px;
+    background: var(--violet-5);
+    padding: 10px 0;
 }
 
 .session-item {

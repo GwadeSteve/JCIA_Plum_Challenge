@@ -20,7 +20,7 @@ import {
 } from "react-icons/md";
 import gwadeImage from "../../assets/team/Gwade Steve.jpg";
 import avodaImage from "../../assets/team/Valery.jpg";
-import haroldImage from "../../assets/team/Njimeyup Harold (2).JPG";
+import haroldImage from "../../assets/team/Harold Njimeyup.jpg";
 import mureilleImage from "../../assets/team/Murielle Sharane.jpg";
 import samyImage from "../../assets/team/Mintyene.jpg";
 import farmerImage from "../../assets/team/Farmer.png";
@@ -45,32 +45,33 @@ const PropositionTeamPage = () => {
     },
     {
       name: "Avodagbe Ze Paul Valery",
-      roles: ["Frontend Developer", "Deep Learning"],
-      bio: "My journey with computer vision began when I realized most AI models struggle with our local varieties of produce. At ENSPD, I've been training models that can distinguish the subtle differences in safou quality that even experienced farmers sometimes miss.",
+      roles: ["Research", "Frontend Developer", "Deep Learning"],
+      bio: "I'm passionate about creating AI that truly understands the world. At ENSPD, I explore how intelligent systems can solve real problems and I believe technology should be inclusive, relevant, and human-centered. My goal is to make AI more impactful for our communities.",
       image: avodaImage,
       socials: {
         github: "https://github.com/cookie-pii",
-        linkedin: "www.linkedin.com/in/avodagbe-ze-paul-valery-5636a826a",
+        linkedin: "https://linkedin.com/in/avodagbe-ze-paul-valery-5636a826a",
       },
       roleIcons: [
+        <HiOutlineAcademicCap key="Research" />,
         <HiOutlineCode key="frontend" />,
         <HiOutlineLightBulb key="dl" />,
       ],
     },
     {
-      name: "Njimeyup Harold Francois",
-      roles: ["Research", "Deep Learning", "UI/UX"],
-      bio: "I believe the best technology feels invisible. My mission at ENSPD is creating interfaces so intuitive that a farmer with any level of tech experience can use our tool in seconds. I'm the team's perfectionist - I've been known to redesign a button twenty times until it feels right.",
+      name: "Njimeyup Mbouombouo Harold Francois",
+      roles: ["Research", "Deep Learning", "Frontend Developer", "UI/UX"],
+      bio: "Passionate about tomorrow’s technologies, I build innovative solutions that combine artificial intelligence, computer vision, and intelligent systems, with a strong focus on functional and thoughtful design. I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful, human-centered projects that place the user at the heart of innovation.",
       image: haroldImage,
       socials: {
-        github: "https://github.com/thierrymbarga",
-        linkedin: "https://linkedin.com/in/thierrymbarga",
-        twitter: "https://twitter.com/thierrymbarga",
+        github: "https://github.com/HaroldNjimeyup",
+        linkedin: "https://linkedin.com/in/HaroldNjimeyup",
+        twitter: "https://twitter.com/NHarold_pro",
       },
       roleIcons: [
         <HiOutlineAcademicCap key="research" />,
         <HiOutlineLightBulb key="dl" />,
-        <HiOutlinePencil key="uiux" />,
+        <HiOutlineCode key="frontend" />,
       ],
     },
     {

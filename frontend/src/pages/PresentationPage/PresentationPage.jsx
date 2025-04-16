@@ -1,6 +1,8 @@
 import React from 'react';
 import './PresentationPage.css';
 import { useNavigate } from 'react-router-dom';
+import PlumLogo from "../../assets/Logo/Logo Pv.png";
+import demofull from '../../assets/demo/full_demo.gif';
 
 const CustomButton = ({ children, variant, link }) => {
     const navigate = useNavigate();
@@ -49,12 +51,15 @@ const PresentationPage = () => {
     return (
         <section className='PresentationPage'>
             <div className="text-block">
+                <div  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <img src={PlumLogo} alt='Logo PlumVision' style={{ width: '100px', height: '100px' }} />
+                </div>
                 <h1 className='animated-gradient-text'>PlumVision</h1>
                 <p>A smart platform for real-time quality analysis of African plums using computer vision.</p>
             </div>
 
             <div className='demo-video' data-aos="fade-in">
-                <img src="/demo.gif" alt="PlumVision Demo" />
+                <img src={demofull} alt="PlumVision Demo" />
             </div>
 
             <div className="action-btns">
