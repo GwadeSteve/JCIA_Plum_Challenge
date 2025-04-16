@@ -1,17 +1,29 @@
-import React from 'react';
-import './PropositionTeamPage.css';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import { HiOutlineCode, HiOutlineDatabase, HiOutlineChartBar, 
-         HiOutlineDesktopComputer, HiOutlineLightBulb, HiOutlineStar,
-         HiOutlineAcademicCap, HiOutlineGlobe, HiOutlinePencil } from 'react-icons/hi';
-import { BsGraphUp, BsShieldCheck, BsLightningCharge } from 'react-icons/bs';
-import { MdOutlineSignalWifiOff, MdOutlinePhoneAndroid, MdOutlineAccessTime } from 'react-icons/md';
-import gwadeImage from "../../assets/team/Gwade Steve.jpg"
-import avodaImage from "../../assets/team/Valery.jpg"
-import haroldImage from "../../assets/team/Njimeyup Harold (2).JPG"
-import mureilleImage from "../../assets/team/Murielle Sharane.jpg"
-import samyImage from "../../assets/team/Mintyene.jpg"
-import farmerImage from "../../assets/team/Farmer.png"
+import React from "react";
+import "./PropositionTeamPage.css";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import {
+  HiOutlineCode,
+  HiOutlineDatabase,
+  HiOutlineChartBar,
+  HiOutlineDesktopComputer,
+  HiOutlineLightBulb,
+  HiOutlineStar,
+  HiOutlineAcademicCap,
+  HiOutlineGlobe,
+  HiOutlinePencil,
+} from "react-icons/hi";
+import { BsGraphUp, BsShieldCheck, BsLightningCharge } from "react-icons/bs";
+import {
+  MdOutlineSignalWifiOff,
+  MdOutlinePhoneAndroid,
+  MdOutlineAccessTime,
+} from "react-icons/md";
+import gwadeImage from "../../assets/team/Gwade Steve.jpg";
+import avodaImage from "../../assets/team/Valery.jpg";
+import haroldImage from "../../assets/team/Njimeyup Harold (2).JPG";
+import mureilleImage from "../../assets/team/Murielle Sharane.jpg";
+import samyImage from "../../assets/team/Mintyene.jpg";
+import farmerImage from "../../assets/team/Farmer.png";
 
 const PropositionTeamPage = () => {
   const teamMembers = [
@@ -23,20 +35,27 @@ const PropositionTeamPage = () => {
       socials: {
         github: "https://github.com/GwadeSteve",
         linkedin: "https://linkedin.com/in/GwadeSteve",
-        twitter: "https://twitter.com/GwadeSteve"
+        twitter: "https://twitter.com/GwadeSteve",
       },
-      roleIcons: [<HiOutlineStar key="star" />, <HiOutlineLightBulb key="dl" />, <HiOutlineDatabase key="backend" />]
+      roleIcons: [
+        <HiOutlineStar key="star" />,
+        <HiOutlineLightBulb key="dl" />,
+        <HiOutlineDatabase key="backend" />,
+      ],
     },
     {
       name: "Avodagbe Ze Paul Valery",
-      roles: ["Frontend Developer"],
+      roles: ["Frontend Developer", "Deep Learning"],
       bio: "My journey with computer vision began when I realized most AI models struggle with our local varieties of produce. At ENSPD, I've been training models that can distinguish the subtle differences in safou quality that even experienced farmers sometimes miss.",
       image: avodaImage,
       socials: {
-        github: "https://github.com/aminatadiallo",
-        linkedin: "https://linkedin.com/in/aminatadiallo"
+        github: "https://github.com/cookie-pii",
+        linkedin: "www.linkedin.com/in/avodagbe-ze-paul-valery-5636a826a",
       },
-      roleIcons: [<HiOutlineCode key="frontend" />]
+      roleIcons: [
+        <HiOutlineCode key="frontend" />,
+        <HiOutlineLightBulb key="dl" />,
+      ],
     },
     {
       name: "Njimeyup Harold Francois",
@@ -46,9 +65,13 @@ const PropositionTeamPage = () => {
       socials: {
         github: "https://github.com/thierrymbarga",
         linkedin: "https://linkedin.com/in/thierrymbarga",
-        twitter: "https://twitter.com/thierrymbarga"
+        twitter: "https://twitter.com/thierrymbarga",
       },
-      roleIcons: [<HiOutlineAcademicCap key="research" />, <HiOutlineLightBulb key="dl" />, <HiOutlinePencil key="uiux" />]
+      roleIcons: [
+        <HiOutlineAcademicCap key="research" />,
+        <HiOutlineLightBulb key="dl" />,
+        <HiOutlinePencil key="uiux" />,
+      ],
     },
     {
       name: "Magne Mureille Sharane",
@@ -57,9 +80,12 @@ const PropositionTeamPage = () => {
       image: mureilleImage,
       socials: {
         github: "https://github.com/fatoundiaye",
-        linkedin: "https://linkedin.com/in/fatoundiaye"
+        linkedin: "https://linkedin.com/in/fatoundiaye",
       },
-      roleIcons: [<HiOutlineChartBar key="data" />, <HiOutlineDatabase key="db" />]
+      roleIcons: [
+        <HiOutlineChartBar key="data" />,
+        <HiOutlineDatabase key="db" />,
+      ],
     },
     {
       name: "Mintyene Samy Junior",
@@ -68,10 +94,13 @@ const PropositionTeamPage = () => {
       image: samyImage,
       socials: {
         github: "https://github.com/kofiosei",
-        linkedin: "https://linkedin.com/in/kofiosei"
+        linkedin: "https://linkedin.com/in/kofiosei",
       },
-      roleIcons: [<HiOutlineDesktopComputer key="cv" />, <HiOutlineDatabase key="backend" />]
-    }
+      roleIcons: [
+        <HiOutlineDesktopComputer key="cv" />,
+        <HiOutlineDatabase key="backend" />,
+      ],
+    },
   ];
 
   const missionStatement = {
@@ -81,41 +110,47 @@ const PropositionTeamPage = () => {
       "Cut post-harvest losses nearly in half for smallholder farmers who can't afford complex equipment",
       "Create technology that works in the real world - spotty internet, dusty conditions, and all",
       "Put the power of AI into the hands of 500+ local farmers who've never used technology in their work",
-      "Build a solution specifically calibrated for Cameroonian safou varieties that global models often misclassify"
-    ]
+      "Build a solution specifically calibrated for Cameroonian safou varieties that global models often misclassify",
+    ],
   };
 
   const impactStats = [
     {
       number: "76%",
-      description: "of small-scale farmers report significant income loss due to quality misjudgments",
-      icon: <BsGraphUp size={30} />
+      description:
+        "of small-scale farmers report significant income loss due to quality misjudgments",
+      icon: <BsGraphUp size={30} />,
     },
     {
       number: "40%",
-      description: "reduction in waste when farmers can accurately assess plum quality",
+      description:
+        "reduction in waste when farmers can accurately assess plum quality",
       icon: <BsShieldCheck size={30} />,
-      highlight: true
+      highlight: true,
     },
     {
       number: "8000+",
-      description: "families across Western Cameroon depend on safou cultivation for livelihood",
-      icon: <HiOutlineGlobe size={30} />
-    }
+      description:
+        "families across Western Cameroon depend on safou cultivation for livelihood",
+      icon: <HiOutlineGlobe size={30} />,
+    },
   ];
 
   return (
     <div className="proposition-team-page">
       <section className="team-header" data-aos="fade-up">
         <h1 className="xxl-font gradient-text">Meet Our Team</h1>
-        <p className="m-font">Five students from ENSPD with one mission: revolutionizing plum quality assessment</p>
+        <p className="m-font">
+          Five students from ENSPD with one mission: revolutionizing plum
+          quality assessment
+        </p>
       </section>
 
       <section className="mission-section">
         <div className="mission-content">
           <h2 className="xl-font gradient-text">{missionStatement.title}</h2>
           <p className="s-font">{missionStatement.text}</p>
-          
+
           <div className="goals-container" data-aos="fade-left">
             <h3 className="l-font">What We're Building for JCIA</h3>
             <ul className="goals-list">
@@ -129,7 +164,10 @@ const PropositionTeamPage = () => {
           </div>
         </div>
         <div className="mission-image" data-aos="fade-right">
-          <img src="https://th.bing.com/th/id/R.6c91ee0b39134bc953d6d9991ba03295?rik=sqCaC%2bhvZNIxhw&riu=http%3a%2f%2fsymbolhunt.com%2fwp-content%2fuploads%2f2020%2f12%2fSafou.jpg&ehk=SX1zgcdcJoyaVB5O4HjsD3Gr76U0gaz6ls8TlCEV%2fDM%3d&risl=&pid=ImgRaw&r=0" alt="Safou Market in Cameroon" />
+          <img
+            src="https://th.bing.com/th/id/R.6c91ee0b39134bc953d6d9991ba03295?rik=sqCaC%2bhvZNIxhw&riu=http%3a%2f%2fsymbolhunt.com%2fwp-content%2fuploads%2f2020%2f12%2fSafou.jpg&ehk=SX1zgcdcJoyaVB5O4HjsD3Gr76U0gaz6ls8TlCEV%2fDM%3d&risl=&pid=ImgRaw&r=0"
+            alt="Safou Market in Cameroon"
+          />
           <div className="image-overlay">
             <span className="xl-font">PlumVision</span>
           </div>
@@ -144,8 +182,12 @@ const PropositionTeamPage = () => {
               <div className="image-overlay-gradient"></div>
               <div className="role-icons">
                 {member.roleIcons.map((icon, iconIndex) => (
-                  <div 
-                    className={`role-icon ${member.roles[iconIndex] === 'Team Lead' ? 'leader-icon' : ''}`} 
+                  <div
+                    className={`role-icon ${
+                      member.roles[iconIndex] === "Team Lead"
+                        ? "leader-icon"
+                        : ""
+                    }`}
                     key={iconIndex}
                     title={member.roles[iconIndex]}
                   >
@@ -158,7 +200,12 @@ const PropositionTeamPage = () => {
               <h3 className="m-font">{member.name}</h3>
               <div className="member-roles">
                 {member.roles.map((role, roleIndex) => (
-                  <span key={roleIndex} className={`role-tag ${role === 'Team Lead' ? 'leader-tag' : ''}`}>
+                  <span
+                    key={roleIndex}
+                    className={`role-tag ${
+                      role === "Team Lead" ? "leader-tag" : ""
+                    }`}
+                  >
                     {role}
                   </span>
                 ))}
@@ -166,17 +213,32 @@ const PropositionTeamPage = () => {
               <p className="member-bio s-font">{member.bio}</p>
               <div className="social-links">
                 {member.socials.github && (
-                  <a href={member.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <a
+                    href={member.socials.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                  >
                     <FaGithub />
                   </a>
                 )}
                 {member.socials.linkedin && (
-                  <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <a
+                    href={member.socials.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                  >
                     <FaLinkedin />
                   </a>
                 )}
                 {member.socials.twitter && (
-                  <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                  <a
+                    href={member.socials.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Twitter"
+                  >
                     <FaTwitter />
                   </a>
                 )}
@@ -187,23 +249,32 @@ const PropositionTeamPage = () => {
       </section>
 
       <section className="community-impact">
-        <h2 className="xl-font gradient-text" data-aos="fade-down" data-aos-duration="300">Real Impact for Cameroon</h2>
-        
+        <h2
+          className="xl-font gradient-text"
+          data-aos="fade-down"
+          data-aos-duration="300"
+        >
+          Real Impact for Cameroon
+        </h2>
+
         <div className="impact-intro">
           <p className="l-font" data-aos="fade-up" data-aos-duration="300">
-            For most Cameroonians, safou isn't just food – it's economic security. Our technology builds on centuries of traditional knowledge, bringing new precision to quality assessment that could transform thousands of livelihoods.
+            For most Cameroonians, safou isn't just food – it's economic
+            security. Our technology builds on centuries of traditional
+            knowledge, bringing new precision to quality assessment that could
+            transform thousands of livelihoods.
           </p>
         </div>
-        
+
         <div className="impact-stats-grid">
           {impactStats.map((stat, index) => (
-            <div 
-              key={index} 
-              className={`impact-stat-card ${stat.highlight ? 'highlight' : ''}`}
+            <div
+              key={index}
+              className={`impact-stat-card ${
+                stat.highlight ? "highlight" : ""
+              }`}
             >
-              <div className="stat-icon">
-                {stat.icon}
-              </div>
+              <div className="stat-icon">{stat.icon}</div>
               <div className="stat-content">
                 <span className="stat-number">{stat.number}</span>
                 <span className="stat-description">{stat.description}</span>
@@ -211,15 +282,21 @@ const PropositionTeamPage = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="impact-visual-section">
           <div className="impact-visual-content">
             <h3 className="l-font">Technology That Makes Sense Here</h3>
             <p className="m-font">
-              Understanding farmers and enterprises challenges before writing a single line of code was key. Our solution is not only technically sound, it's relevant and useful for the people who need it most.
+              Understanding farmers and enterprises challenges before writing a
+              single line of code was key. Our solution is not only technically
+              sound, it's relevant and useful for the people who need it most.
             </p>
             <div className="impact-features">
-              <div className="impact-feature" data-aos="fade-left" data-aos-duration="300">
+              <div
+                className="impact-feature"
+                data-aos="fade-left"
+                data-aos-duration="300"
+              >
                 <div className="feature-icon">
                   <MdOutlineSignalWifiOff />
                 </div>
@@ -228,7 +305,11 @@ const PropositionTeamPage = () => {
                   <p>PlumVision can function without internet access</p>
                 </div>
               </div>
-              <div className="impact-feature" data-aos="fade-left" data-aos-duration="350">
+              <div
+                className="impact-feature"
+                data-aos="fade-left"
+                data-aos-duration="350"
+              >
                 <div className="feature-icon">
                   <BsLightningCharge />
                 </div>
@@ -237,7 +318,11 @@ const PropositionTeamPage = () => {
                   <p>Obtain results in seconds, and keep pace with busy days</p>
                 </div>
               </div>
-              <div className="impact-feature" data-aos="fade-left" data-aos-duration="400">
+              <div
+                className="impact-feature"
+                data-aos="fade-left"
+                data-aos-duration="400"
+              >
                 <div className="feature-icon">
                   <MdOutlinePhoneAndroid />
                 </div>
@@ -246,13 +331,20 @@ const PropositionTeamPage = () => {
                   <p>Optimized for the devices farmers already own</p>
                 </div>
               </div>
-              <div className="impact-feature" data-aos="fade-left" data-aos-duration="450">
+              <div
+                className="impact-feature"
+                data-aos="fade-left"
+                data-aos-duration="450"
+              >
                 <div className="feature-icon">
                   <MdOutlineAccessTime />
                 </div>
                 <div className="feature-text">
                   <h4>Learns Over Time</h4>
-                  <p>Our model improves over time, adapting to changing conditions</p>
+                  <p>
+                    Our model improves over time, adapting to changing
+                    conditions
+                  </p>
                 </div>
               </div>
             </div>
@@ -263,21 +355,29 @@ const PropositionTeamPage = () => {
         </div>
       </section>
 
-        <section className="call-to-action">
-            <div className="cta-content">
-                <h2 className="xl-font gradient-text">Ready to see our solution in action?</h2>
-                <p className="m-font">Explore our demo to experience how PlumVision can transform quality assessment across Cameroon.</p>
-                <button className="filled-violet cta-button" onClick={() => window.location.href = '/demo'}>
-                <HiOutlineDesktopComputer size={20} />
-                <span>Try the Demo</span>
-                </button>
-            </div>
-            <div className="cta-decoration">
-                <div className="cta-circle circle-1"></div>
-                <div className="cta-circle circle-2"></div>
-                <div className="cta-circle circle-3"></div>
-            </div>
-        </section>
+      <section className="call-to-action">
+        <div className="cta-content">
+          <h2 className="xl-font gradient-text">
+            Ready to see our solution in action?
+          </h2>
+          <p className="m-font">
+            Explore our demo to experience how PlumVision can transform quality
+            assessment across Cameroon.
+          </p>
+          <button
+            className="filled-violet cta-button"
+            onClick={() => (window.location.href = "/demo")}
+          >
+            <HiOutlineDesktopComputer size={20} />
+            <span>Try the Demo</span>
+          </button>
+        </div>
+        <div className="cta-decoration">
+          <div className="cta-circle circle-1"></div>
+          <div className="cta-circle circle-2"></div>
+          <div className="cta-circle circle-3"></div>
+        </div>
+      </section>
     </div>
   );
 };
