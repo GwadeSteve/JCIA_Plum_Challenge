@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import './PresentationPage.css';
 import { useNavigate } from 'react-router-dom';
 import PlumLogo from "../../assets/Logo/Logo Pv.png";
-import demoFull from '../../assets/demo/ui.png';
+import demoFull from '../../assets/demo/full_demo.gif';
 import demo1 from '../../assets/demo/demo1.PNG';
-import demo2 from '../../assets/demo/Demo2.gif';
-import demo3 from '../../assets/demo/Demo3.gif';
+import demo2 from '../../assets/demo/Demo2.png';
+import demo3 from '../../assets/demo/Demo3.png';
+
+const LazyImage = lazy(() => import('../../components/LazyImage/LazyImage'));
+const placeholder = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 
 const CustomButton = ({ children, variant, link }) => {
     const navigate = useNavigate();
@@ -50,20 +53,6 @@ const features = [
     },
 ];
 
-// Simple component for efficient image loading
-const OptimizedImage = ({ src, alt, className }) => {
-    return (
-        <div className="optimized-image-container">
-            <img 
-                src={src} 
-                alt={alt} 
-                className={className}
-                loading="lazy" // Native lazy loading
-            />
-        </div>
-    );
-};
-
 const PresentationPage = () => {
     return (
         <section className='PresentationPage'>
@@ -76,10 +65,13 @@ const PresentationPage = () => {
             </div>
 
             <div className='demo-video' data-aos="fade-in">
-                <OptimizedImage 
-                    src={demoFull} 
-                    alt="PlumVision Demo" 
-                />
+                <Suspense fallback={<div className="placeholder-loading"></div>}>
+                    <LazyImage 
+                        src={demoFull} 
+                        placeholder={placeholder} 
+                        alt="PlumVision Demo" 
+                    />
+                </Suspense>
             </div>
 
             <div className="action-btns">
@@ -90,13 +82,15 @@ const PresentationPage = () => {
                 {features.map((feature, idx) => (
                     <div key={idx} className={`feature ${feature.reversed ? 'reversed' : ''}`}>
                         <div className="img-box">
-                            <OptimizedImage 
-                                src={feature.gif} 
-                                alt={feature.title}
-                                className="feature-image"
-                                data-aos="fade-in"
-                                data-aos-duration="300"
-                            />
+                            <Suspense fallback={<div className="placeholder-loading"></div>}>
+                                <LazyImage 
+                                    src={feature.gif} 
+                                    placeholder={placeholder}
+                                    alt={feature.title}
+                                    data-aos="fade-in"
+                                    data-aos-duration="300"
+                                />
+                            </Suspense>
                         </div>
                         <div>
                             <h2 className="gradient-text">{feature.title}</h2>

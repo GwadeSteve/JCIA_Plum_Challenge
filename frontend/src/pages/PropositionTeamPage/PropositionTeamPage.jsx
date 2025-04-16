@@ -18,34 +18,37 @@ const PropositionTeamPage = () => {
     {
       name: "Gwade Steve Vaelle",
       roles: ["Team Lead", "Deep Learning", "Backend Developer"],
-      bio: "Currently a Data Science and Artificial Intelligence Research Student at Polytechnic Douala, I aspire to become a Computer Vision Researcher. I've always been fascinated about how algorithms learn and how AI can solve real african challenges from healthcare to agriculture.",
+      bio: "Currently a Data Science and Artificial Intelligence Research Student at ENSPD, I aspire to become a Computer Vision Researcher. I've always been fascinated about how algorithms learn and how AI can solve real african challenges from healthcare to agriculture.",
       image: gwadeImage,
       socials: {
         github: "https://github.com/GwadeSteve",
-        linkedin: "https://linkedin.com/in/GwadeSteve",
-        twitter: "https://twitter.com/GwadeSteve"
+        linkedin: "https://www.linkedin.com/in/gwade-steve-0414b8249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        twitter: "https://x.com/SteveGwade?t=0TjmjV0VPJ8EmMiNKOoemg&s=09"
       },
       roleIcons: [<HiOutlineStar key="star" />, <HiOutlineLightBulb key="dl" />, <HiOutlineDatabase key="backend" />]
     },
     {
       name: "Avodagbe Ze Paul Valery",
-      roles: ["Frontend Developer"],
-      bio: "My journey with computer vision began when I realized most AI models struggle with our local varieties of produce. At ENSPD, I've been training models that can distinguish the subtle differences in safou quality that even experienced farmers sometimes miss.",
+      roles: ["Frontend Developer", "Deep Learning"],
+      bio: "I'm passionate about creating AI that truly understands the world. At ENSPD, I explore how intelligent systems can solve real problems and I believe technology should be inclusive, relevant, and human-centered. My goal is to make AI more impactful for our communities.",
       image: avodaImage,
       socials: {
         github: "https://github.com/cookie-pii",
-        linkedin: "https://linkedin.com/in/aminatadiallo"
+        linkedin: "https://linkedin.com/in/avodagbe-ze-paul-valery-5636a826a",
       },
-      roleIcons: [<HiOutlineCode key="frontend" />]
+      roleIcons: [
+        <HiOutlineCode key="frontend" />,
+        <HiOutlineLightBulb key="dl" />,
+      ],
     },
     {
       name: "Njimeyup Mbouombouo Harold Francois",
       roles: ["Research", "Deep Learning", 'Frontend Developer',"UI/UX"],
-      bio: "Passionate about tomorrow’s technologies, I build innovative solutions that combine artificial intelligence, computer vision, and intelligent systems, with a strong focus on functional and thoughtful design. I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful, human-centered projects that place the user at the heart of innovation.",
+      bio: "Passionate about tomorrow’s technologies with a strong focus on functional and thoughtful design, I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful projects that place the user at the heart of innovation.",
       image: haroldImage,
       socials: {
         github: "https://github.com/HaroldNjimeyup",
-        linkedin: "https://linkedin.com/in/HaroldNjimeyup",
+        linkedin: "https://www.linkedin.com/in/harold-njimeyup-906a20297?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
         twitter: "https://twitter.com/NHarold_pro"
       },
       roleIcons: [<HiOutlineAcademicCap key="research" />, <HiOutlineLightBulb key="dl" />, <HiOutlineCode key="frontend" />]
@@ -53,22 +56,22 @@ const PropositionTeamPage = () => {
     {
       name: "Magne Mureille Sharane",
       roles: ["Data Scientist", "Database"],
-      bio: "My grandmother was a plum farmer in the West Region - I grew up watching her test plums by hand. Now at ENSPD, I'm building systems that honor that traditional knowledge while making it more precise. I'm obsessed with creating tech that works even when the internet doesn't.",
+      bio: "My name is Mureille Sharane Magne, a Master's student in Data Science and Artificial Intelligence at ENSPD. I define myself as a curious and hardworking woman, passionate about what I do and not afraid to take on new challenges.",
       image: mureilleImage,
       socials: {
-        github: "https://github.com/fatoundiaye",
-        linkedin: "https://linkedin.com/in/fatoundiaye"
+        github: "https://github.com/MureilleMagne",
+        linkedin: "https://www.linkedin.com/in/mureille-signe-089a35328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
       },
       roleIcons: [<HiOutlineChartBar key="data" />, <HiOutlineDatabase key="db" />]
     },
     {
       name: "Mintyene Samy Junior",
       roles: ["Computer Vision", "Backend Developer"],
-      bio: "I've spent more weekends than I can count in local markets collecting plum data. My friends laugh when I explain the subtle differences between 12 varieties of safou, but this passion drives our AI's accuracy. At ENSPD, I'm the team's walking encyclopedia of African plum varieties.",
+      bio: "I'm passionate about harnessing AI, particularly image recognition, to tackle real-world challenges. By focusing on practical solutions, I hope to make a meaningful difference through technology.",
       image: samyImage,
       socials: {
-        github: "https://github.com/kofiosei",
-        linkedin: "https://linkedin.com/in/kofiosei"
+        github: "https://github.com/Minty3n3",
+        linkedin: "https://www.linkedin.com/in/samy-mintyene-602894311?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
       },
       roleIcons: [<HiOutlineDesktopComputer key="cv" />, <HiOutlineDatabase key="backend" />]
     }
