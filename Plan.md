@@ -239,7 +239,7 @@ The system comprises a **React** frontend for the user interface, a **FastAPI** 
 | Dashboard section with statistics (after session stop) | **Done** |
 | Demo video prepared | ⬜ |
 | Presentation prepared | ⬜ |
-| GitHub repository ready for submission | ⬜ |
+| GitHub repository ready for submission | **Done** |
 
 ---
 

@@ -311,9 +311,82 @@ If you encounter issues with dataset organization, make sure the dataset structu
 
 ---
 
-## Team
+<div align="center">
+  <h2>The Visionaries Behind PlumVision</h2>
+  <p><i>A collaborative team of AI enthusiasts dedicated to solving real challenges through Science and Technology</i></p>
+</div>
 
-PlumVision - A team of passionate AI enthusiasts building innovative solutions for agricultural challenges.
+<div class="team-container" style="margin-top: 40px;">
+  <div style="background: linear-gradient(to right, rgba(138, 43, 226, 0.1), rgba(138, 43, 226, 0.05)); border-radius: 12px; padding: 25px; margin-bottom: 30px; border-left: 5px solid #8a2be2;">
+    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+      <div style="margin-right: 15px;">
+        <h3 style="color: #8a2be2; margin: 0; font-size: 24px;">👑 Team Lead</h3>
+        <h2 style="margin: 5px 0 0 0;">Gwade Steve Vaelle</h2>
+        <p style="margin: 5px 0; font-weight: bold;"><i>Deep Learning | Backend Developer</i></p>
+      </div>
+      <div style="margin-left: auto; text-align: right;">
+        <a href="https://github.com/GwadeSteve">
+          <img src="https://img.shields.io/badge/GitHub-GwadeSteve-blueviolet?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" height="28">
+        </a><br>
+        <a href="https://www.linkedin.com/in/gwade-steve-0414b8249" style="margin-top: 5px; display: inline-block;">
+          <img src="https://img.shields.io/badge/LinkedIn-Gwade_Steve-blueviolet?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" height="28">
+        </a>
+      </div>
+    </div>
+    <p style="margin-top: 10px; line-height: 1.6;">Currently a Data Science and AI Research Student at ENSPD, aspiring to become a Computer Vision Researcher. Fascinated by how algorithms learn and how AI can solve real African challenges.</p>
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center; gap:30px; width:100%;></div>
+
+  <div style="background-color:rgb(22, 23, 24); border-radius: 8px; color: white; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); border-top: 4px solid #6c5ce7; 
+    <h3 style="margin-top: 0;">Njimeyup Mbouombouo Harold</h3>
+    <p style="color: #6c5ce7; font-weight: bold; margin-top: -10px;"><i>Research | Frontend | UI/UX</i></p>
+    <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(108, 92, 231, 0.1), rgba(108, 92, 231, 0.5), rgba(108, 92, 231, 0.1));">
+    <p style="font-size: 0.95em; line-height: 1.5;">Passionate about tomorrow's technologies with a focus on functional design. Believes technology shines when it's intuitive, elegant, and accessible.</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <a href="https://github.com/HaroldNjimeyup">
+        <img src="https://img.shields.io/badge/GitHub-HaroldNjimeyup-gray?logo=github&labelColor=181717&color=6c5ce7" alt="GitHub" height="22">
+      </a>
+      <a href="https://www.linkedin.com/in/harold-njimeyup-906a20297">
+        <img src="https://img.shields.io/badge/LinkedIn-Harold_Njimeyup-blue?logo=linkedin&labelColor=0A66C2&color=6c5ce7" alt="LinkedIn" height="22">
+      </a>
+    </div>
+  </div>
+
+  <div style="background-color:rgb(22, 23, 24); border-radius: 8px; color: white; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); border-top: 4px solid #6c5ce7; margin-bottom: 20px;">
+    <h3 style="margin-top: 0;">Magne Mureille Sharane</h3>
+    <p style="color: #6c5ce7; font-weight: bold; margin-top: -10px;"><i>Data Scientist</i></p>
+    <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(108, 92, 231, 0.1), rgba(108, 92, 231, 0.5), rgba(108, 92, 231, 0.1));">
+    <p style="font-size: 0.95em; line-height: 1.5;">Master's student in Data Science and AI at ENSPD. Defines herself as a curious and hardworking woman, passionate and unafraid to take on new challenges.</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <a href="https://github.com/Mureille-Ma">
+        <img src="https://img.shields.io/badge/GitHub-Mureille--Ma-gray?logo=github&labelColor=181717&color=6c5ce7" alt="GitHub" height="22">
+      </a>
+      <a href="https://www.linkedin.com/in/mureille-signe-089a35328">
+        <img src="https://img.shields.io/badge/LinkedIn-Mureille_Signe-blue?logo=linkedin&labelColor=0A66C2&color=6c5ce7" alt="LinkedIn" height="22">
+      </a>
+    </div>
+  </div>
+
+  <div style="background-color:rgb(22, 23, 24); border-radius: 8px; color: white; padding: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); border-top: 4px solid #6c5ce7; margin-bottom: 20px;">
+    <h3 style="margin-top: 0;">Mintyene Samy Junior</h3>
+    <p style="color: #6c5ce7; font-weight: bold; margin-top: -10px;"><i>Computer Vision | Backend Developer</i></p>
+    <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(108, 92, 231, 0.1), rgba(108, 92, 231, 0.5), rgba(108, 92, 231, 0.1));">
+    <p style="font-size: 0.95em; line-height: 1.5;">Passionate about harnessing AI, particularly image recognition, to tackle real-world challenges. Focused on developing practical solutions that make a meaningful difference.</p>
+    <div style="display: flex; justify-content: space-between; margin-top: 15px;">
+      <a href="https://github.com/M1nty3n3">
+        <img src="https://img.shields.io/badge/GitHub-M1nty3n3-gray?logo=github&labelColor=181717&color=6c5ce7" alt="GitHub" height="22">
+      </a>
+      <a href="https://www.linkedin.com/in/samy-mintyene-602894311">
+        <img src="https://img.shields.io/badge/LinkedIn-Samy_Mintyene-blue?logo=linkedin&labelColor=0A66C2&color=6c5ce7" alt="LinkedIn" height="22">
+      </a>
+    </div>
+  </div>
+</div>
+
+<div align="center" style="margin-top: 40px;">
+  <p><em>Together, we develop innovative AI solutions for real african challenges.</em></p>
+</div>
 
 ---
 

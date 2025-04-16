@@ -59,7 +59,7 @@ const PropositionTeamPage = () => {
       bio: "My name is Mureille Sharane Magne, a Master's student in Data Science and Artificial Intelligence at ENSPD. I define myself as a curious and hardworking woman, passionate about what I do and not afraid to take on new challenges.",
       image: mureilleImage,
       socials: {
-        github: "https://github.com/MureilleMagne",
+        github: "https://github.com/Mureille-Ma",
         linkedin: "https://www.linkedin.com/in/mureille-signe-089a35328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
       },
       roleIcons: [<HiOutlineChartBar key="data" />, <HiOutlineDatabase key="db" />]
@@ -70,7 +70,7 @@ const PropositionTeamPage = () => {
       bio: "I'm passionate about harnessing AI, particularly image recognition, to tackle real-world challenges. By focusing on practical solutions, I hope to make a meaningful difference through technology.",
       image: samyImage,
       socials: {
-        github: "https://github.com/Minty3n3",
+        github: "https://github.com/M1nty3n3",
         linkedin: "https://www.linkedin.com/in/samy-mintyene-602894311?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
       },
       roleIcons: [<HiOutlineDesktopComputer key="cv" />, <HiOutlineDatabase key="backend" />]
