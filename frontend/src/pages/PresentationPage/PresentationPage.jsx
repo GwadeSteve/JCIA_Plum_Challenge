@@ -1,6 +1,7 @@
 import React from 'react';
 import './PresentationPage.css';
 import { useNavigate } from 'react-router-dom';
+import PlumLogo from "../../assets/Logo/Logo Pv.png";
 import demofull from '../../assets/demo/full_demo.gif';
 
 const CustomButton = ({ children, variant, link }) => {
@@ -51,7 +52,7 @@ const PresentationPage = () => {
         <section className='PresentationPage'>
             <div className="text-block">
                 <div  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <img src="./Logo Pv.png" alt='Logo PlumVision' style={{ width: '200px', height: '200px' }} />
+                    <img src={PlumLogo} alt='Logo PlumVision' style={{ width: '100px', height: '100px' }} />
                 </div>
                 <h1 className='animated-gradient-text'>PlumVision</h1>
                 <p>A smart platform for real-time quality analysis of African plums using computer vision.</p>
