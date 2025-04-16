@@ -1,9 +1,11 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import './PresentationPage.css';
 import { useNavigate } from 'react-router-dom';
 import PlumLogo from "../../assets/Logo/Logo Pv.png";
-const LazyImage = lazy(() => import('../../components/LazyImage/LazyImage'));
-const placeholder = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+import demoFull from '../../assets/demo/ui.png';
+import demo1 from '../../assets/demo/demo1.PNG';
+import demo2 from '../../assets/demo/Demo2.gif';
+import demo3 from '../../assets/demo/Demo3.gif';
 
 const CustomButton = ({ children, variant, link }) => {
     const navigate = useNavigate();
@@ -21,16 +23,11 @@ const CustomButton = ({ children, variant, link }) => {
     );
 };
 
-const demoFullSrc = '../../assets/demo/full_demo.gif';
-const demo1Src = '../../assets/demo/Demo1.gif';
-const demo2Src = '../../assets/demo/Demo2.gif';
-const demo3Src = '../../assets/demo/Demo3.gif';
-
 const features = [
     {
         title: "Instant Analysis",
         desc: "Snap a photo or upload an image of any African plum. Within milliseconds, our AI tells you if it's Unripe, Rotten, Cracked, Spotted, Bruised, or perfectly Healthy. No more guessing get reliable results backed by deep learning.",
-        gif: demo1Src,
+        gif: demo1,
         btn: "Try Out",
         link: "/demo",
         reversed: false,
@@ -38,7 +35,7 @@ const features = [
     {
         title: "Live Classification",
         desc: "Turn your camera or webcam into a smart sorting assistant. As plums pass by, our system analyzes each one in real-time, perfect for conveyor belts and small-scale sorting setups.",
-        gif: demo2Src,
+        gif: demo2,
         btn: "Go Live",
         link: "/realtime",
         reversed: true,
@@ -46,12 +43,26 @@ const features = [
     {
         title: "Session Statistics",
         desc: "Track everything from class distribution to model confidence of each session. Our dashboard helps you make informed decisions and keep a record of your sorting performance.",
-        gif: demo3Src,
+        gif: demo3,
         btn: "View Stats",
         link: "/realtime",
         reversed: false,
     },
 ];
+
+// Simple component for efficient image loading
+const OptimizedImage = ({ src, alt, className }) => {
+    return (
+        <div className="optimized-image-container">
+            <img 
+                src={src} 
+                alt={alt} 
+                className={className}
+                loading="lazy" // Native lazy loading
+            />
+        </div>
+    );
+};
 
 const PresentationPage = () => {
     return (
@@ -65,13 +76,10 @@ const PresentationPage = () => {
             </div>
 
             <div className='demo-video' data-aos="fade-in">
-                <Suspense fallback={<div className="placeholder-loading"></div>}>
-                    <LazyImage 
-                        src={demoFullSrc} 
-                        placeholder={placeholder} 
-                        alt="PlumVision Demo" 
-                    />
-                </Suspense>
+                <OptimizedImage 
+                    src={demoFull} 
+                    alt="PlumVision Demo" 
+                />
             </div>
 
             <div className="action-btns">
@@ -82,15 +90,13 @@ const PresentationPage = () => {
                 {features.map((feature, idx) => (
                     <div key={idx} className={`feature ${feature.reversed ? 'reversed' : ''}`}>
                         <div className="img-box">
-                            <Suspense fallback={<div className="placeholder-loading"></div>}>
-                                <LazyImage 
-                                    src={feature.gif} 
-                                    placeholder={placeholder}
-                                    alt={feature.title}
-                                    data-aos="fade-in"
-                                    data-aos-duration="300"
-                                />
-                            </Suspense>
+                            <OptimizedImage 
+                                src={feature.gif} 
+                                alt={feature.title}
+                                className="feature-image"
+                                data-aos="fade-in"
+                                data-aos-duration="300"
+                            />
                         </div>
                         <div>
                             <h2 className="gradient-text">{feature.title}</h2>
