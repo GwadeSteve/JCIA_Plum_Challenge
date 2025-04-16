@@ -33,7 +33,7 @@ const PropositionTeamPage = () => {
       bio: "My journey with computer vision began when I realized most AI models struggle with our local varieties of produce. At ENSPD, I've been training models that can distinguish the subtle differences in safou quality that even experienced farmers sometimes miss.",
       image: avodaImage,
       socials: {
-        github: "https://github.com/aminatadiallo",
+        github: "https://github.com/cookie-pii",
         linkedin: "https://linkedin.com/in/aminatadiallo"
       },
       roleIcons: [<HiOutlineCode key="frontend" />]
@@ -41,7 +41,7 @@ const PropositionTeamPage = () => {
     {
       name: "Njimeyup Mbouombouo Harold Francois",
       roles: ["Research", "Deep Learning", 'Frontend Developer',"UI/UX"],
-      bio: "Passionate about tomorrow’s technologies, I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful, human-centered projects that place the user at the heart of innovation.",
+      bio: "Passionate about tomorrow’s technologies, I build innovative solutions that combine artificial intelligence, computer vision, and intelligent systems, with a strong focus on functional and thoughtful design. I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful, human-centered projects that place the user at the heart of innovation.",
       image: haroldImage,
       socials: {
         github: "https://github.com/HaroldNjimeyup",
@@ -53,7 +53,7 @@ const PropositionTeamPage = () => {
     {
       name: "Magne Mureille Sharane",
       roles: ["Data Scientist", "Database"],
-      bio: "My name is Mureille Sharane Magne, a Master's student in Data Science and Artificial Intelligence at ENSPD. I define myself as a curious and hardworking woman, passionate about what I do and not afraid to take on new challenges.",
+      bio: "My grandmother was a plum farmer in the West Region - I grew up watching her test plums by hand. Now at ENSPD, I'm building systems that honor that traditional knowledge while making it more precise. I'm obsessed with creating tech that works even when the internet doesn't.",
       image: mureilleImage,
       socials: {
         github: "https://github.com/fatoundiaye",
@@ -64,7 +64,7 @@ const PropositionTeamPage = () => {
     {
       name: "Mintyene Samy Junior",
       roles: ["Computer Vision", "Backend Developer"],
-      bio: "My friends laugh when I explain the subtle differences between 12 varieties of safou, but this passion drives my accuracy. At ENSPD, I'm the team's walking encyclopedia of African plum varieties.",
+      bio: "I've spent more weekends than I can count in local markets collecting plum data. My friends laugh when I explain the subtle differences between 12 varieties of safou, but this passion drives our AI's accuracy. At ENSPD, I'm the team's walking encyclopedia of African plum varieties.",
       image: samyImage,
       socials: {
         github: "https://github.com/kofiosei",
