@@ -241,7 +241,7 @@ const RealtimePage = () => {
 
     captureIntervalRef.current = setInterval(() => {
       captureAndSendFrame();
-    }, 500);
+    }, 1000);
   }, [startCamera, captureAndSendFrame, initWebsocket, displayPopup]);
 
   const loadPastSessions = useCallback(async () => {
