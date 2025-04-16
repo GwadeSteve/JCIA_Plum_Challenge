@@ -8,7 +8,7 @@ import { BsGraphUp, BsShieldCheck, BsLightningCharge } from 'react-icons/bs';
 import { MdOutlineSignalWifiOff, MdOutlinePhoneAndroid, MdOutlineAccessTime } from 'react-icons/md';
 import gwadeImage from "../../assets/team/Gwade Steve.jpg"
 import avodaImage from "../../assets/team/Valery.jpg"
-import haroldImage from "../../assets/team/Njimeyup Harold (2).JPG"
+import haroldImage from "../../assets/team/Harold Njimeyup.jpg"
 import mureilleImage from "../../assets/team/Murielle Sharane.jpg"
 import samyImage from "../../assets/team/Mintyene.jpg"
 import farmerImage from "../../assets/team/Farmer.png"
@@ -39,16 +39,16 @@ const PropositionTeamPage = () => {
       roleIcons: [<HiOutlineCode key="frontend" />]
     },
     {
-      name: "Njimeyup Harold Francois",
-      roles: ["Research", "Deep Learning", "UI/UX"],
-      bio: "I believe the best technology feels invisible. My mission at ENSPD is creating interfaces so intuitive that a farmer with any level of tech experience can use our tool in seconds. I'm the team's perfectionist - I've been known to redesign a button twenty times until it feels right.",
+      name: "Njimeyup Mbouombouo Harold Francois",
+      roles: ["Research", "Deep Learning", 'Frontend Developer',"UI/UX"],
+      bio: "Passionate about tomorrow’s technologies, I build innovative solutions that combine artificial intelligence, computer vision, and intelligent systems, with a strong focus on functional and thoughtful design. I believe technology truly shines when it’s intuitive, elegant, and accessible. Curious, creative, and driven by purpose, I strive to develop meaningful, human-centered projects that place the user at the heart of innovation.",
       image: haroldImage,
       socials: {
-        github: "https://github.com/thierrymbarga",
-        linkedin: "https://linkedin.com/in/thierrymbarga",
-        twitter: "https://twitter.com/thierrymbarga"
+        github: "https://github.com/HaroldNjimeyup",
+        linkedin: "https://linkedin.com/in/HaroldNjimeyup",
+        twitter: "https://twitter.com/NHarold_pro"
       },
-      roleIcons: [<HiOutlineAcademicCap key="research" />, <HiOutlineLightBulb key="dl" />, <HiOutlinePencil key="uiux" />]
+      roleIcons: [<HiOutlineAcademicCap key="research" />, <HiOutlineLightBulb key="dl" />, <HiOutlineCode key="frontend" />]
     },
     {
       name: "Magne Mureille Sharane",

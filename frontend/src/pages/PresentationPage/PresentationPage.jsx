@@ -49,6 +49,9 @@ const PresentationPage = () => {
     return (
         <section className='PresentationPage'>
             <div className="text-block">
+                <div  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <img src="./Logo Pv.png" alt='Logo PlumVision' style={{ width: '200px', height: '200px' }} />
+                </div>
                 <h1 className='animated-gradient-text'>PlumVision</h1>
                 <p>A smart platform for real-time quality analysis of African plums using computer vision.</p>
             </div>
