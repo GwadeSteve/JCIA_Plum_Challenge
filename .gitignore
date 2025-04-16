@@ -40,11 +40,15 @@ runs/
 wandb/          
        
 # Images
-*.jpg
-*.jpeg
 *.webp
 *.bmp
-*.gif
+
+API/**/*.png
+API/**/*.jpg
+API/**/*.jpeg
+
+Models/Trained/**/*.png
+Models/Trained/**/*.jpg
 
 .DS_Store
 Thumbs.db

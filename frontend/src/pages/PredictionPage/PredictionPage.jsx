@@ -80,7 +80,7 @@ const PredictionPage = () => {
 
     return (
         <div className='PredictionPage'>
-            <div className="uploader">
+            <div className="uploader" data-aos="fade-in" data-aos-duration="500">
                 {showCamera ? (
                     <CameraCapture 
                         onCapture={handleCameraCapture} 
@@ -114,7 +114,7 @@ const PredictionPage = () => {
                     </>
                 )}
             </div>
-            <div className="results">
+            <div className="results" data-aos="fade-in" data-aos-duration="500">
                 <h2 className='l-font'>Predictions</h2>
                 <div className="graph">
                     <PredictionGraph predictions={predictions} />
