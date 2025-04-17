@@ -45,10 +45,10 @@
 <div style="display: flex; flex-direction: row; align-items: center; margin-bottom: 30px;">
   <div style="flex: 2; padding-right: 20px;">
     <p align="center">
-      <strong>Real-Time Classification</strong>
+      <strong>Real-Time Analysis with statistics</strong>
     </p>
     <p align="center">
-      <img src="./demos/Demo2.gif" alt="PlumVision Real-Time Classification" width="100%">
+      <img src="./demos/Demo2.png" alt="PlumVision Real-Time Classification" width="100%">
     </p>
   </div>
   <div style="flex: 1; display: flex; flex-direction: column;">
@@ -57,7 +57,7 @@
         <strong>Image Upload Feature</strong>
       </p>
       <p align="center">
-        <img src="./demos/Demo1.gif" alt="PlumVision Upload Feature" width="100%">
+        <img src="./demos/demo1.PNG" alt="PlumVision Upload Feature" width="100%">
       </p>
     </div>
     <div>
@@ -65,7 +65,7 @@
         <strong>Session Statistics</strong>
       </p>
       <p align="center">
-        <img src="./demos/Demo3.gif" alt="PlumVision Session Statistics" width="100%">
+        <img src="./demos/Demo3.png" alt="PlumVision Session Statistics" width="100%">
       </p>
     </div>
   </div>
