@@ -4,7 +4,7 @@ import { FiCamera, FiPause, FiPlay, FiVideo, FiX, FiBarChart2, FiClock, FiRefres
 import './RealtimePage.css';
 import { connectToStreamSession } from '../../utilities/api';
 import PredictionGraph from '../../components/PredictionGraph/PredictionGraph';
-import SessionDetails from '../../components/SessionDetails/SessionDetails';
+//import SessionDetails from '../../components/SessionDetails/SessionDetails';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 

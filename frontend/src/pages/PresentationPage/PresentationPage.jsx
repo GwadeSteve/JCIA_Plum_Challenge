@@ -3,9 +3,12 @@ import './PresentationPage.css';
 import { useNavigate } from 'react-router-dom';
 import PlumLogo from "../../assets/Logo/Logo Pv.png";
 import demoFull from '../../assets/demo/full_demo.gif';
-import demo1 from '../../assets/demo/demo1.PNG';
-import demo2 from '../../assets/demo/Demo2.png';
-import demo3 from '../../assets/demo/Demo3.png';
+import demo1 from '../../assets/demo/Demo1.gif';
+import demo2 from '../../assets/demo/Demo2.gif';
+import demo3 from '../../assets/demo/Demo3.gif';
+import farmerImage from "../../assets/team/Farmer.png"
+import { BsLightningCharge } from 'react-icons/bs';
+import { MdOutlineSignalWifiOff, MdOutlinePhoneAndroid, MdOutlineAccessTime } from 'react-icons/md';
 
 const LazyImage = lazy(() => import('../../components/LazyImage/LazyImage'));
 const placeholder = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
@@ -77,6 +80,59 @@ const PresentationPage = () => {
             <div className="action-btns">
                 <CustomButton variant="filled-black" link="/demo">Demo</CustomButton>
             </div>
+
+            <section className="community-impact">
+                     
+                    <div className="impact-visual-section">
+                      <div className="impact-visual-content">
+                        <h3 className="l-font">Technology That Makes Sense Here</h3>
+                        <p className="m-font">
+                          Understanding farmers and enterprises challenges before writing a single line of code was key. Our solution is not only technically sound, it's relevant and useful for the people who need it most.
+                        </p>
+                        <div className="impact-features">
+                          <div className="impact-feature" data-aos="fade-left" data-aos-duration="300">
+                            <div className="feature-icon">
+                              <MdOutlineSignalWifiOff />
+                            </div>
+                            <div className="feature-text">
+                              <h4>Available Offline</h4>
+                              <p>PlumVision can function without internet access</p>
+                            </div>
+                          </div>
+                          <div className="impact-feature" data-aos="fade-left" data-aos-duration="350">
+                            <div className="feature-icon">
+                              <BsLightningCharge />
+                            </div>
+                            <div className="feature-text">
+                              <h4>Real-time Analysis</h4>
+                              <p>Obtain results in seconds, and keep pace with busy days</p>
+                            </div>
+                          </div>
+                          <div className="impact-feature" data-aos="fade-left" data-aos-duration="400">
+                            <div className="feature-icon">
+                              <MdOutlinePhoneAndroid />
+                            </div>
+                            <div className="feature-text">
+                              <h4>Performance Beast</h4>
+                              <p>Optimized for the devices farmers already own</p>
+                            </div>
+                          </div>
+                          <div className="impact-feature" data-aos="fade-left" data-aos-duration="450">
+                            <div className="feature-icon">
+                              <MdOutlineAccessTime />
+                            </div>
+                            <div className="feature-text">
+                              <h4>Learns Over Time</h4>
+                              <p>Our model improves over time, adapting to changing conditions</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="impact-visual-image">
+                        <img src={farmerImage} alt="Cameroon farmer using PlumVision" />
+                      </div>
+                    </div>
+            </section>
 
             <section className='features-section' id="features">
                 {features.map((feature, idx) => (

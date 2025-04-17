@@ -109,6 +109,33 @@ const PropositionTeamPage = () => {
 
   return (
     <div className="proposition-team-page">
+      <section className="commmunity-impact" data-aos="fade-up" data-aos-duration="600">
+        <h2 className="xl-font gradient-text" data-aos="fade-down" data-aos-duration="300">Real Impact for Cameroon</h2>
+        
+        <div className="impact-intro">
+          <p className="l-font" data-aos="fade-up" data-aos-duration="300">
+            For many in Cameroon, safou is a seasonal source of income and hope. Our technology builds on local know-how, bringing more accuracy to quality checks that can improve lives across entire communities.
+          </p>
+        </div>
+        
+        <div className="impact-stats-grid">
+          {impactStats.map((stat, index) => (
+            <div 
+              key={index} 
+              className={`impact-stat-card ${stat.highlight ? 'highlight' : ''}`}
+            >
+              <div className="stat-icon">
+                {stat.icon}
+              </div>
+              <div className="stat-content">
+                <span className="stat-number">{stat.number}</span>
+                <span className="stat-description">{stat.description}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="team-header" data-aos="fade-up">
         <h1 className="xxl-font gradient-text">Meet The Team and Vision</h1>
         <p className="m-font">Five students from ENSPD with one mission: revolutionizing plum quality assessment</p>
@@ -140,31 +167,7 @@ const PropositionTeamPage = () => {
       </section>
 
       <section className="community-impact">
-        <h2 className="xl-font gradient-text" data-aos="fade-down" data-aos-duration="300">Real Impact for Cameroon</h2>
-        
-        <div className="impact-intro">
-          <p className="l-font" data-aos="fade-up" data-aos-duration="300">
-            For many in Cameroon, safou is a seasonal source of income and hope. Our technology builds on local know-how, bringing more accuracy to quality checks that can improve lives across entire communities.
-          </p>
-        </div>
-        
-        <div className="impact-stats-grid">
-          {impactStats.map((stat, index) => (
-            <div 
-              key={index} 
-              className={`impact-stat-card ${stat.highlight ? 'highlight' : ''}`}
-            >
-              <div className="stat-icon">
-                {stat.icon}
-              </div>
-              <div className="stat-content">
-                <span className="stat-number">{stat.number}</span>
-                <span className="stat-description">{stat.description}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-        
+         
         <div className="impact-visual-section">
           <div className="impact-visual-content">
             <h3 className="l-font">Technology That Makes Sense Here</h3>

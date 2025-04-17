@@ -297,6 +297,23 @@
     padding: 30px 0 60px;
 }
 
+.proposition-team-page .community-impact {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    padding: 30px 0 60px;
+}
+
+.commmunity-impact {
+    margin-top: 0px;
+    padding: 0px 0 60px;
+}
+
+.commmunity-impact h2 {
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: var(--font-title);
+}
+
 .community-impact h2 {
     margin-bottom: 40px;
     text-align: center;
