@@ -101,16 +101,16 @@ const PropositionTeamPage = () => {
       highlight: true
     },
     {
-      number: "8000+",
-      description: "families across Western Cameroon depend on safou cultivation for livelihood",
+      number: "8,000+",
+      description: "households in forested regions rely on seasonal safou harvests to support their income",
       icon: <HiOutlineGlobe size={30} />
-    }
+    }    
   ];
 
   return (
     <div className="proposition-team-page">
       <section className="team-header" data-aos="fade-up">
-        <h1 className="xxl-font gradient-text">Meet Our Team</h1>
+        <h1 className="xxl-font gradient-text">Meet The Team and Vision</h1>
         <p className="m-font">Five students from ENSPD with one mission: revolutionizing plum quality assessment</p>
       </section>
 
@@ -139,62 +139,12 @@ const PropositionTeamPage = () => {
         </div>
       </section>
 
-      <section className="team-grid" data-aos="fade-up">
-        {teamMembers.map((member, index) => (
-          <div className="team-card" key={index} data-aos="fade-in">
-            <div className="member-image-container">
-              <img src={member.image} alt={member.name} />
-              <div className="image-overlay-gradient"></div>
-              <div className="role-icons">
-                {member.roleIcons.map((icon, iconIndex) => (
-                  <div 
-                    className={`role-icon ${member.roles[iconIndex] === 'Team Lead' ? 'leader-icon' : ''}`} 
-                    key={iconIndex}
-                    title={member.roles[iconIndex]}
-                  >
-                    {icon}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="member-info">
-              <h3 className="m-font">{member.name}</h3>
-              <div className="member-roles">
-                {member.roles.map((role, roleIndex) => (
-                  <span key={roleIndex} className={`role-tag ${role === 'Team Lead' ? 'leader-tag' : ''}`}>
-                    {role}
-                  </span>
-                ))}
-              </div>
-              <p className="member-bio s-font">{member.bio}</p>
-              <div className="social-links">
-                {member.socials.github && (
-                  <a href={member.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <FaGithub />
-                  </a>
-                )}
-                {member.socials.linkedin && (
-                  <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <FaLinkedin />
-                  </a>
-                )}
-                {member.socials.twitter && (
-                  <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                    <FaTwitter />
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
-
       <section className="community-impact">
         <h2 className="xl-font gradient-text" data-aos="fade-down" data-aos-duration="300">Real Impact for Cameroon</h2>
         
         <div className="impact-intro">
           <p className="l-font" data-aos="fade-up" data-aos-duration="300">
-            For most Cameroonians, safou isn't just food – it's economic security. Our technology builds on centuries of traditional knowledge, bringing new precision to quality assessment that could transform thousands of livelihoods.
+            For many in Cameroon, safou is a seasonal source of income and hope. Our technology builds on local know-how, bringing more accuracy to quality checks that can improve lives across entire communities.
           </p>
         </div>
         
@@ -266,21 +216,71 @@ const PropositionTeamPage = () => {
         </div>
       </section>
 
-        <section className="call-to-action">
-            <div className="cta-content">
-                <h2 className="xl-font gradient-text">Ready to see our solution in action?</h2>
-                <p className="m-font">Explore our demo to experience how PlumVision can transform quality assessment across Cameroon.</p>
-                <button className="filled-violet cta-button" onClick={() => window.location.href = '/demo'}>
-                <HiOutlineDesktopComputer size={20} />
-                <span>Try the Demo</span>
-                </button>
+      <section className="team-grid" data-aos="fade-up">
+        {teamMembers.map((member, index) => (
+          <div className="team-card" key={index} data-aos="fade-in">
+            <div className="member-image-container">
+              <img src={member.image} alt={member.name} />
+              <div className="image-overlay-gradient"></div>
+              <div className="role-icons">
+                {member.roleIcons.map((icon, iconIndex) => (
+                  <div 
+                    className={`role-icon ${member.roles[iconIndex] === 'Team Lead' ? 'leader-icon' : ''}`} 
+                    key={iconIndex}
+                    title={member.roles[iconIndex]}
+                  >
+                    {icon}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="cta-decoration">
-                <div className="cta-circle circle-1"></div>
-                <div className="cta-circle circle-2"></div>
-                <div className="cta-circle circle-3"></div>
+            <div className="member-info">
+              <h3 className="m-font">{member.name}</h3>
+              <div className="member-roles">
+                {member.roles.map((role, roleIndex) => (
+                  <span key={roleIndex} className={`role-tag ${role === 'Team Lead' ? 'leader-tag' : ''}`}>
+                    {role}
+                  </span>
+                ))}
+              </div>
+              <p className="member-bio s-font">{member.bio}</p>
+              <div className="social-links">
+                {member.socials.github && (
+                  <a href={member.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <FaGithub />
+                  </a>
+                )}
+                {member.socials.linkedin && (
+                  <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <FaLinkedin />
+                  </a>
+                )}
+                {member.socials.twitter && (
+                  <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <FaTwitter />
+                  </a>
+                )}
+              </div>
             </div>
-        </section>
+          </div>
+        ))}
+      </section>
+
+      <section className="call-to-action">
+          <div className="cta-content">
+              <h2 className="xl-font gradient-text">Ready to see our solution in action?</h2>
+              <p className="m-font">Explore our demo to experience how PlumVision can transform quality assessment across Cameroon.</p>
+              <button className="filled-violet cta-button" onClick={() => window.location.href = '/demo'}>
+              <HiOutlineDesktopComputer size={20} />
+              <span>Try the Demo</span>
+              </button>
+          </div>
+          <div className="cta-decoration">
+              <div className="cta-circle circle-1"></div>
+              <div className="cta-circle circle-2"></div>
+              <div className="cta-circle circle-3"></div>
+          </div>
+      </section>
     </div>
   );
 };

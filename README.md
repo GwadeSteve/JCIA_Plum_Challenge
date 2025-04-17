@@ -22,7 +22,6 @@
   <a href="#demonstration">Demonstration</a> •
   <a href="#technologies">Technologies Used</a> •
   <a href="#repository-content">Repository Content</a> •
-  <a href="#api-endpoints">API Endpoints</a> •
   <a href="#getting-started">Getting Started</a> •
   <a href="#troubleshooting">Troubleshooting</a> •
   <a href="#team">Team</a>
@@ -94,7 +93,7 @@ JCIA_PLUM_DATA_CHALLENGE/
 │   │   ├── spotted/
 │   │   ├── unaffected/
 │   │   └── unripe/
-│   ├── Sets/                       # Full dataset splits
+│   ├── cleaned_data/                       # Full dataset splits
 │   ├── defect_data/                # Defect classification datasets
 │   ├── superclass_data/            # Superclass classification datasets
 │   └── processed_csv.csv           # Dataset metadata
@@ -153,46 +152,6 @@ JCIA_PLUM_DATA_CHALLENGE/
 
 ---
 
-## API Endpoints
-
-The backend exposes the following key endpoints:
-
-### REST Endpoints
-
-- **POST /api/predict**
-  - Upload an image for classification
-  - Returns the plum category and confidence score
-  - Optional query parameter: `session_id` to associate with a session
-  - Example: `curl -X POST -F "file=@plum.jpg" http://localhost:8000/api/predict`
-
-- **GET /api/predictions**
-  - Retrieve recent predictions
-  - Optional query parameter: `session_id` to filter by session
-  - Optional query parameter: `limit` to control number of results
-  - Example: `curl http://localhost:8000/api/predictions?session_id=abc123&limit=20`
-
-- **GET /api/sessions**
-  - List all scanning sessions
-  - Optional query parameter: `active_only=true` to see only active sessions
-  - Example: `curl http://localhost:8000/api/sessions?active_only=true`
-
-- **GET /api/metrics/{session_id}**
-  - Retrieve detailed statistics for a specific session
-  - Returns counts by category and class, total processed, timing information
-  - Example: `curl http://localhost:8000/api/metrics/abc123`
-
-### WebSocket Endpoint
-
-- **WebSocket /ws/stream**
-  - Real-time bidirectional connection for video stream processing
-  - Send video frames from camera to server
-  - Receive predictions and updated statistics in real-time
-  - Used by the frontend for live classification
-
-Complete API documentation is available via Swagger UI after you start the backend server at `http://localhost:8000/docs`.
-
----
-
 ## Getting Started
 
 ### Prerequisites
@@ -243,6 +202,43 @@ cd JCIA_Plum_Challenge
 
    The API will be accessible at [http://localhost:8000](http://localhost:8000), with Swagger documentation at [http://localhost:8000/docs](http://localhost:8000/docs).
 
+The backend exposes the following key endpoints:
+
+### REST Endpoints
+
+- **POST /api/predict**
+  - Upload an image for classification
+  - Returns the plum category and confidence score
+  - Optional query parameter: `session_id` to associate with a session
+  - Example: `curl -X POST -F "file=@plum.jpg" http://localhost:8000/api/predict`
+
+- **GET /api/predictions**
+  - Retrieve recent predictions
+  - Optional query parameter: `session_id` to filter by session
+  - Optional query parameter: `limit` to control number of results
+  - Example: `curl http://localhost:8000/api/predictions?session_id=abc123&limit=20`
+
+- **GET /api/sessions**
+  - List all scanning sessions
+  - Optional query parameter: `active_only=true` to see only active sessions
+  - Example: `curl http://localhost:8000/api/sessions?active_only=true`
+
+- **GET /api/metrics/{session_id}**
+  - Retrieve detailed statistics for a specific session
+  - Returns counts by category and class, total processed, timing information
+  - Example: `curl http://localhost:8000/api/metrics/abc123`
+
+### WebSocket Endpoint
+
+- **WebSocket /ws/stream**
+  - Real-time bidirectional connection for video stream processing
+  - Send video frames from camera to server
+  - Receive predictions and updated statistics in real-time
+  - Used by the frontend for live classification
+
+Complete API documentation is available via Swagger UI after you start the backend server at `http://localhost:8000/docs`.
+
+
 ### Setting Up the Frontend
 
 1. **Install dependencies**:
@@ -263,10 +259,11 @@ cd JCIA_Plum_Challenge
 ### Using the Application
 
 1. Open your browser and navigate to [http://localhost:3000](http://localhost:3000)
-2. In the prediction section, start a real-time scanning session (ensure your camera is accessible)
+2. In the `Stream Session` link in navbar, start a real-time scanning session (ensure your camera is accessible or connect to an external camera )
 3. The system will display the video feed, plum classifications, and session statistics in real-time
 4. You can stop the session at any time
 5. The Dashboard section will show a summary of session statistics after stopping
+6. You can also choose to simply make a prediction on an upload or capture and predict through the `Demo` section
 
 ### Experimenting with Models (Optional)
 
@@ -274,6 +271,8 @@ If you want to experiment with the models:
 
 1. **Prepare the dataset**:
 
+  Make sure you have downloaded and extracted the dataset in this project, then
+  
    ```bash
    cd Notebooks/EXPLORATION
    jupyter notebook
@@ -370,14 +369,7 @@ If you encounter issues with dataset organization, make sure the dataset structu
 
 <div align="center" style="margin-top: 40px;">
   <p><em>Together, we develop innovative AI solutions for real african challenges.</em></p>
+  <p align="center" style="margin-top: 50px;font-size: 0.8rem; color:white;">PlumVision for the JCIA Hackathon 2025.</p>
 </div>
 
 ---
-
-## License
-
-MIT
-
----
-
-> Project developed for the JCIA Hackathon 2025.
